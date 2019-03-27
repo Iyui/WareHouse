@@ -106,7 +106,7 @@
             // tbUnitPrice
             // 
             this.tbUnitPrice.Font = new System.Drawing.Font("宋体", 12F);
-            this.tbUnitPrice.Location = new System.Drawing.Point(111, 195);
+            this.tbUnitPrice.Location = new System.Drawing.Point(111, 188);
             this.tbUnitPrice.Name = "tbUnitPrice";
             this.tbUnitPrice.Size = new System.Drawing.Size(230, 26);
             this.tbUnitPrice.TabIndex = 5;
@@ -124,7 +124,7 @@
             // tbQuantity
             // 
             this.tbQuantity.Font = new System.Drawing.Font("宋体", 12F);
-            this.tbQuantity.Location = new System.Drawing.Point(507, 195);
+            this.tbQuantity.Location = new System.Drawing.Point(507, 188);
             this.tbQuantity.Name = "tbQuantity";
             this.tbQuantity.Size = new System.Drawing.Size(238, 26);
             this.tbQuantity.TabIndex = 7;
@@ -222,9 +222,9 @@
             this.label1.Font = new System.Drawing.Font("宋体", 12F);
             this.label1.Location = new System.Drawing.Point(24, 82);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 16);
+            this.label1.Size = new System.Drawing.Size(80, 16);
             this.label1.TabIndex = 13;
-            this.label1.Text = "物资编号";
+            this.label1.Text = "*物资编号";
             // 
             // label2
             // 
@@ -232,9 +232,9 @@
             this.label2.Font = new System.Drawing.Font("宋体", 12F);
             this.label2.Location = new System.Drawing.Point(428, 82);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 16);
+            this.label2.Size = new System.Drawing.Size(48, 16);
             this.label2.TabIndex = 14;
-            this.label2.Text = "品名";
+            this.label2.Text = "*品名";
             // 
             // label3
             // 
@@ -242,9 +242,9 @@
             this.label3.Font = new System.Drawing.Font("宋体", 12F);
             this.label3.Location = new System.Drawing.Point(24, 142);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(40, 16);
+            this.label3.Size = new System.Drawing.Size(48, 16);
             this.label3.TabIndex = 15;
-            this.label3.Text = "规格";
+            this.label3.Text = "*规格";
             // 
             // label4
             // 
@@ -260,11 +260,11 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("宋体", 12F);
-            this.label5.Location = new System.Drawing.Point(24, 198);
+            this.label5.Location = new System.Drawing.Point(24, 191);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(72, 16);
+            this.label5.Size = new System.Drawing.Size(80, 16);
             this.label5.TabIndex = 16;
-            this.label5.Text = "缴库单价";
+            this.label5.Text = "*缴库单价";
             // 
             // label6
             // 
@@ -310,11 +310,11 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("宋体", 12F);
-            this.label10.Location = new System.Drawing.Point(428, 198);
+            this.label10.Location = new System.Drawing.Point(428, 191);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(40, 16);
+            this.label10.Size = new System.Drawing.Size(48, 16);
             this.label10.TabIndex = 23;
-            this.label10.Text = "数量";
+            this.label10.Text = "*数量";
             // 
             // label11
             // 
@@ -322,9 +322,9 @@
             this.label11.Font = new System.Drawing.Font("宋体", 12F);
             this.label11.Location = new System.Drawing.Point(428, 142);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(72, 16);
+            this.label11.Size = new System.Drawing.Size(80, 16);
             this.label11.TabIndex = 22;
-            this.label11.Text = "计量单位";
+            this.label11.Text = "*计量单位";
             // 
             // label12
             // 
@@ -392,9 +392,9 @@
             this.label15.Font = new System.Drawing.Font("宋体", 12F);
             this.label15.Location = new System.Drawing.Point(24, 238);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(40, 16);
+            this.label15.Size = new System.Drawing.Size(48, 16);
             this.label15.TabIndex = 31;
-            this.label15.Text = "金额";
+            this.label15.Text = "*金额";
             // 
             // tbPrices
             // 

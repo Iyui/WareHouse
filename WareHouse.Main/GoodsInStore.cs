@@ -21,7 +21,7 @@ namespace WareHouse.Main
 
         #region 变量及属性
         private string connStr = Connection.ConnStr;
-
+        Connection ct = new Connection();
 
         #endregion
 
@@ -34,7 +34,7 @@ namespace WareHouse.Main
             //string connStr = Connection.ConnStr;// windwos 身份验证方式
             using (SqlConnection conn = new SqlConnection(connStr))
             {
-                string sqlStr = string.Format("select * from storehouse where  物资编号='" + cbWuzibianhao.Text.Trim() + "'");
+                string sqlStr = string.Format("select * from storehouse where  物资编号='" + cbWuzibianhao.Text.Trim() + "'");//此处可以注入式攻击,以后再改
                 using (SqlCommand command = conn.CreateCommand())
                 {
                     command.CommandText = sqlStr;
@@ -116,28 +116,44 @@ namespace WareHouse.Main
 
         private void bt_PutIn_Click(object sender, EventArgs e)
         {
-            Get_goods_paras(out SqlParameter[] In_goods_paras, out SqlParameter[] storehouse_paras);
-            //isMeetConditions();
-            string ingoodsSql = "INSERT INTO in_goods (" +
-                "物资编号,品名,规格,计量单位," +
-                "缴库单价,数量,金额,结存数量,结存金额," +
-                "缴库日期,供货单位,制造厂家,缴库部门," +
-                "缴库人,入库单编号,发票编号,备注) " +
-                "VALUES(" +
-                "@物资编号,@品名,@规格,@计量单位," +
-                "@缴库单价,@数量,@金额,@结存数量,@结存金额," +
-                "@缴库日期,@供货单位,@制造厂家,@缴库部门," +
-                "@缴库人,@入库单编号,@发票编号,@备注)";
+            var goodcode = cbWuzibianhao.Text.Trim();//物资编号
+            var goodname = cbPinming.Text.Trim();//品名
+            var guige = cbGuige.Text.Trim();//规格
+            var danwei = tbJiliangdanwei.Text.Trim();//计量单位
+            if (String.IsNullOrEmpty(goodcode)
+                && String.IsNullOrEmpty(goodname)
+                && String.IsNullOrEmpty(guige)
+                && String.IsNullOrEmpty(danwei)
+                && String.IsNullOrEmpty(tbUnitPrice.Text.Trim())
+                && String.IsNullOrEmpty(tbQuantity.Text.Trim()))
+            {
+                MessageBox.Show("星号标记的栏目不能为空");
+                return;
+            }
 
-            string goodstoreSql = $"update storehouse set 数量 = @数量, 库存单价 = @库存单价, 金额 = @金额 WHERE 物资编号 = '{ cbWuzibianhao.Text.Trim()}' ";
+            
             using (SqlConnection conn = new SqlConnection(connStr))
             {
                 conn.Open();
                 SqlTransaction tran = conn.BeginTransaction();
                 try
                 {
-                    var isIngoodSucceed = AddData(conn, tran, ingoodsSql, In_goods_paras);
-                    var isStorehouseSucceed = UpdateData(conn, tran, goodstoreSql, storehouse_paras);
+                    Get_goods_paras(out SqlParameter[] In_goods_paras, out SqlParameter[] storehouse_paras);
+                    //isMeetConditions();
+                    string ingoodsSql = "INSERT INTO in_goods (" +
+                        "物资编号,品名,规格,计量单位," +
+                        "缴库单价,数量,金额,结存数量,结存金额," +
+                        "缴库日期,供货单位,制造厂家,缴库部门," +
+                        "缴库人,入库单编号,发票编号,备注) " +
+                        "VALUES(" +
+                        "@物资编号,@品名,@规格,@计量单位," +
+                        "@缴库单价,@数量,@金额,@结存数量,@结存金额," +
+                        "@缴库日期,@供货单位,@制造厂家,@缴库部门," +
+                        "@缴库人,@入库单编号,@发票编号,@备注)";
+
+                    string goodstoreSql = $"update storehouse set 数量 = @数量, 库存单价 = @库存单价, 金额 = @金额 WHERE 物资编号 = '{ cbWuzibianhao.Text.Trim()}' ";
+                    var isIngoodSucceed = ct.AddData(conn, tran, ingoodsSql, In_goods_paras);
+                    var isStorehouseSucceed = ct.UpdateData(conn, tran, goodstoreSql, storehouse_paras);
                     if (isIngoodSucceed && isStorehouseSucceed)
                     {
                         tran.Commit();
@@ -288,6 +304,7 @@ namespace WareHouse.Main
             var goodname = cbPinming.Text.Trim();//品名
             var guige = cbGuige.Text.Trim();//规格
             var danwei = tbJiliangdanwei.Text.Trim();//计量单位
+            
             decimal shuliang = decimal.Parse(tbQuantity.Text.Trim());//数量
             decimal danjia = decimal.Parse(tbUnitPrice.Text.Trim());//单价
             decimal jine = decimal.Parse(tbPrices.Text.Trim());//金额
@@ -330,11 +347,11 @@ namespace WareHouse.Main
 
         private bool SetStorehouse(out string storejine, out string storedanjia, out string storeshuliang, out string jiecunjine, out string jiecunshuliang)
         {
-            jiecunjine = "";
-            jiecunshuliang = "";
-            storejine = "";
-            storedanjia = "";
-            storeshuliang = "";
+            jiecunjine = "0";
+            jiecunshuliang = "0";
+            storejine = "0";
+            storedanjia = "0";
+            storeshuliang = "0";
             SqlDataReader reader1 = null;
             var goodcode = cbWuzibianhao.Text.Trim();//物资编号
             var goodname = cbPinming.Text.Trim();//品名

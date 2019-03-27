@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace Shgarden.WareHouse {
+namespace WareHouse.Main {
     
     
     /// <summary>
@@ -582,7 +582,7 @@ namespace Shgarden.WareHouse {
         }
     }
 }
-namespace Shgarden.WareHouse.storemanageDataSetTableAdapters {
+namespace WareHouse.Main.storemanageDataSetTableAdapters {
     
     
     /// <summary>

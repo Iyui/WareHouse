@@ -30,16 +30,16 @@
         {
             this.components = new System.ComponentModel.Container();
             this.cbUserName = new System.Windows.Forms.ComboBox();
-            this.storemanageDataSet = new Shgarden.WareHouse.storemanageDataSet();
             this.purviewBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.purviewTableAdapter = new Shgarden.WareHouse.storemanageDataSetTableAdapters.purviewTableAdapter();
+            this.storemanageDataSet = new WareHouse.Main.storemanageDataSet();
+            this.purviewTableAdapter = new WareHouse.Main.storemanageDataSetTableAdapters.purviewTableAdapter();
             this.label1 = new System.Windows.Forms.Label();
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.bt_Login = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.storemanageDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.purviewBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.storemanageDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // cbUserName
@@ -55,15 +55,15 @@
             this.cbUserName.TabIndex = 0;
             this.cbUserName.ValueMember = "操作员姓名";
             // 
-            // storemanageDataSet
-            // 
-            this.storemanageDataSet.DataSetName = "storemanageDataSet";
-            this.storemanageDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // purviewBindingSource
             // 
             this.purviewBindingSource.DataMember = "purview";
             this.purviewBindingSource.DataSource = this.storemanageDataSet;
+            // 
+            // storemanageDataSet
+            // 
+            this.storemanageDataSet.DataSetName = "storemanageDataSet";
+            this.storemanageDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // purviewTableAdapter
             // 
@@ -73,11 +73,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("宋体", 17F);
-            this.label1.Location = new System.Drawing.Point(119, 48);
+            this.label1.Location = new System.Drawing.Point(133, 62);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(194, 23);
+            this.label1.Size = new System.Drawing.Size(148, 23);
             this.label1.TabIndex = 1;
-            this.label1.Text = "嘉地仓库管理系统";
+            this.label1.Text = "仓库管理系统";
             // 
             // tbPassword
             // 
@@ -115,7 +115,7 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "密  码";
             // 
-            // Form1
+            // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -126,11 +126,11 @@
             this.Controls.Add(this.tbPassword);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbUserName);
-            this.Name = "Form1";
+            this.Name = "Login";
             this.Text = "登陆";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.storemanageDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.purviewBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.storemanageDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
