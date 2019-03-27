@@ -55,8 +55,8 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.bt_PutIn = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.bt_Clear = new System.Windows.Forms.Button();
+            this.bt_exit = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.tbPrices = new System.Windows.Forms.TextBox();
@@ -356,23 +356,25 @@
             this.bt_PutIn.UseVisualStyleBackColor = true;
             this.bt_PutIn.Click += new System.EventHandler(this.bt_PutIn_Click);
             // 
-            // button2
+            // bt_Clear
             // 
-            this.button2.Location = new System.Drawing.Point(358, 568);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(110, 43);
-            this.button2.TabIndex = 27;
-            this.button2.Text = "清空表格";
-            this.button2.UseVisualStyleBackColor = true;
+            this.bt_Clear.Location = new System.Drawing.Point(358, 568);
+            this.bt_Clear.Name = "bt_Clear";
+            this.bt_Clear.Size = new System.Drawing.Size(110, 43);
+            this.bt_Clear.TabIndex = 27;
+            this.bt_Clear.Text = "清空表格";
+            this.bt_Clear.UseVisualStyleBackColor = true;
+            this.bt_Clear.Click += new System.EventHandler(this.bt_Clear_Click);
             // 
-            // button3
+            // bt_exit
             // 
-            this.button3.Location = new System.Drawing.Point(559, 568);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(110, 43);
-            this.button3.TabIndex = 28;
-            this.button3.Text = "退出";
-            this.button3.UseVisualStyleBackColor = true;
+            this.bt_exit.Location = new System.Drawing.Point(559, 568);
+            this.bt_exit.Name = "bt_exit";
+            this.bt_exit.Size = new System.Drawing.Size(110, 43);
+            this.bt_exit.TabIndex = 28;
+            this.bt_exit.Text = "退出";
+            this.bt_exit.UseVisualStyleBackColor = true;
+            this.bt_exit.Click += new System.EventHandler(this.bt_exit_Click);
             // 
             // label14
             // 
@@ -415,13 +417,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(942, 657);
+            this.ClientSize = new System.Drawing.Size(847, 657);
             this.Controls.Add(this.dateTime);
             this.Controls.Add(this.tbPrices);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label15);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.bt_exit);
+            this.Controls.Add(this.bt_Clear);
             this.Controls.Add(this.bt_PutIn);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label13);
@@ -485,8 +487,8 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button bt_PutIn;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button bt_Clear;
+        private System.Windows.Forms.Button bt_exit;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox tbPrices;
