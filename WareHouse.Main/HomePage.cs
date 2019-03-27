@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Shgarden.WareHouse
+namespace WareHouse.Main
 {
     public partial class HomePage : Form
     {

@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using WareHouse.ConnStr;
-namespace Shgarden.WareHouse
+namespace WareHouse.Main
 {
 
     public partial class GoodsInStore : Form

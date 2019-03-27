@@ -1,4 +1,4 @@
-﻿namespace Shgarden.WareHouse
+﻿namespace WareHouse.Main
 {
     partial class HomePage
     {
