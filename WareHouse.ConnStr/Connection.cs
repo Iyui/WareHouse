@@ -45,7 +45,7 @@ namespace WareHouse.ConnStr
         /// <param name="sqlStr">查询语句</param>
         /// <param name="parameter">参数</param>
         /// <returns></returns>
-        public static DataTable QueryData(SqlConnection conn, SqlTransaction tran, string sqlStr, params SqlParameter[] parameter)
+        public DataTable QueryData(SqlConnection conn, string sqlStr, params SqlParameter[] parameter)
         {
             try
             {

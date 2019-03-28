@@ -62,7 +62,8 @@
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.tSB_FZT = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.tsb_Report = new System.Windows.Forms.ToolStripButton();
+            this.tsb_Manage = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -315,7 +316,8 @@
             this.toolStripButton3,
             this.toolStripButton2,
             this.tSB_FZT,
-            this.toolStripButton1});
+            this.tsb_Report,
+            this.tsb_Manage});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(800, 90);
@@ -354,15 +356,25 @@
             this.tSB_FZT.Text = "查询";
             this.tSB_FZT.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
-            // toolStripButton1
+            // tsb_Report
             // 
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(68, 87);
-            this.toolStripButton1.Text = "报表";
-            this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsb_Report.Image = ((System.Drawing.Image)(resources.GetObject("tsb_Report.Image")));
+            this.tsb_Report.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsb_Report.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsb_Report.Name = "tsb_Report";
+            this.tsb_Report.Size = new System.Drawing.Size(68, 87);
+            this.tsb_Report.Text = "报表";
+            this.tsb_Report.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // tsb_Manage
+            // 
+            this.tsb_Manage.Image = ((System.Drawing.Image)(resources.GetObject("tsb_Manage.Image")));
+            this.tsb_Manage.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsb_Manage.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsb_Manage.Name = "tsb_Manage";
+            this.tsb_Manage.Size = new System.Drawing.Size(68, 87);
+            this.tsb_Manage.Text = "管理";
+            this.tsb_Manage.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // HomePage
             // 
@@ -427,6 +439,7 @@
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripButton tSB_FZT;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton tsb_Report;
+        private System.Windows.Forms.ToolStripButton tsb_Manage;
     }
 }

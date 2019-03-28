@@ -30,6 +30,9 @@ namespace WareHouse.Main
         {
             cbPinming.Items.Clear();
             cbGuige.Items.Clear();
+            cbPinming.Text = "";
+            cbGuige.Text = "";
+            tbJiliangdanwei.Clear();
             SqlDataReader reader = null;
             //string connStr = Connection.ConnStr;// windwos 身份验证方式
             using (SqlConnection conn = new SqlConnection(connStr))
@@ -131,7 +134,6 @@ namespace WareHouse.Main
                 return;
             }
 
-            
             using (SqlConnection conn = new SqlConnection(connStr))
             {
                 conn.Open();
@@ -180,124 +182,6 @@ namespace WareHouse.Main
             }
         }
 
-        /// <summary>
-        /// 数据库添加数据
-        /// </summary>
-        /// <param name="sqlStr"></param>
-        /// <param name="parameter"></param>
-        /// <returns></returns>
-        public bool AddData(SqlConnection conn, SqlTransaction tran, string sqlStr, params SqlParameter[] parameter)
-        {
-            try
-            {
-                //conn.Open();
-                SqlCommand cmd = new SqlCommand(sqlStr, conn);
-                cmd.Parameters.AddRange(parameter);
-                cmd.Transaction = tran;
-                var row = cmd.ExecuteNonQuery();
-
-                if (row > 0)
-                {
-                    return true;
-                }
-                return false;
-
-            }
-            catch (Exception ex)
-            {
-                throw new ApplicationException("添加数据异常" + ex.Message);
-            }
-        }
-
-        /// <summary>
-        /// 查询数据
-        /// </summary>
-        /// <param name="sqlStr">查询语句</param>
-        /// <param name="parameter">参数</param>
-        /// <returns></returns>
-        public static DataTable QueryData(SqlConnection conn, SqlTransaction tran, string sqlStr, params SqlParameter[] parameter)
-        {
-            try
-            {
-
-                //conn.Open();
-                SqlCommand cmd = new SqlCommand(sqlStr, conn);
-                DataSet dt = new DataSet();
-                SqlDataAdapter adapter = new SqlDataAdapter();
-                cmd.Parameters.AddRange(parameter);
-                adapter.SelectCommand = cmd;
-                adapter.Fill(dt);
-                //conn.Close();
-                return dt.Tables[0];
-
-            }
-            catch (Exception ex)
-            {
-                throw new ApplicationException("查询数据异常" + ex.Message);
-            }
-        }
-
-        /// <summary>
-        /// 删除数据
-        /// </summary>
-        /// <param name="sqlStr">删除语句</param>
-        /// <param name="parameter">参数</param>
-        /// <returns></returns>
-        public static bool DeleteData(SqlTransaction tran, string sqlStr, params SqlParameter[] parameter)
-        {
-            try
-            {
-                using (SqlConnection conn = new SqlConnection())
-                {
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand(sqlStr, conn);
-                    cmd.Parameters.AddRange(parameter);
-                    var row = cmd.ExecuteNonQuery();
-                    conn.Close();
-                    if (row > 0)
-                    {
-                        return true;
-                    }
-                    return false;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new ApplicationException("删除数据异常" + ex.Message);
-            }
-        }
-
-        /// <summary>
-        /// 更新数据
-        /// </summary>
-        /// <param name="sqlStr">更新语句</param>
-        /// <param name="parameter">参数</param>
-        /// <returns></returns>
-        public bool UpdateData(SqlConnection conn, SqlTransaction tran, string sqlStr, params SqlParameter[] parameter)
-        {
-            try
-            {
-                // conn.Open();
-                SqlCommand cmd = new SqlCommand(sqlStr, conn);
-                cmd.Parameters.AddRange(parameter);
-                cmd.Transaction = tran;
-                var row = cmd.ExecuteNonQuery();
-
-                //conn.Close();
-                if (row > 0)
-                {
-                    return true;
-                }
-                return false;
-
-            }
-            catch (Exception ex)
-            {
-                throw new ApplicationException("更新数据异常" + ex.Message);
-            }
-        }
-
-
         private void Get_goods_paras(out SqlParameter[] In_goods_paras, out SqlParameter[] storehouse_paras)
         {
             var goodcode = cbWuzibianhao.Text.Trim();//物资编号
@@ -309,8 +193,8 @@ namespace WareHouse.Main
             decimal danjia = decimal.Parse(tbUnitPrice.Text.Trim());//单价
             decimal jine = decimal.Parse(tbPrices.Text.Trim());//金额
             var bumen = cbbumen.Text.Trim();//缴库部门
-            var rukudan = textBox1.Text.Trim();//入库单编号
-            var jiaokuren = comboBox2.Text.Trim();//缴库人
+            var rukudan = tbRukudan.Text.Trim();//入库单编号
+            var jiaokuren = cbjiaokuren.Text.Trim();//缴库人
             var fapiao = tbfapiaobianhao.Text.Trim();//发票编号
             var gonghuo = tbgonghuodanwei.Text.Trim();//供货单位
             var zhizao = tbzhizaochangjia.Text.Trim();//制造厂家
@@ -361,8 +245,8 @@ namespace WareHouse.Main
             var danjia = tbUnitPrice.Text.Trim();//单价
             var jine = tbPrices.Text.Trim();//金额
             var bumen = cbbumen.Text.Trim();//缴库部门
-            var rukudan = textBox1.Text.Trim();//入库单编号
-            var jiaokuren = comboBox2.Text.Trim();//缴库人
+            var rukudan = tbRukudan.Text.Trim();//入库单编号
+            var jiaokuren = cbjiaokuren.Text.Trim();//缴库人
             var fapiao = tbfapiaobianhao.Text.Trim();//发票编号
             var gonghuo = tbgonghuodanwei.Text.Trim();//供货单位
             var zhizao = tbzhizaochangjia.Text.Trim();//制造厂家
@@ -430,7 +314,7 @@ namespace WareHouse.Main
                                     if (float.Parse(danjia) > 0)
                                     {
                                         storejine = (Convert.ToSingle(reader1["数量"]) + float.Parse(danjia) * float.Parse(shuliang)).ToString("#0.000000");
-                                        storedanjia = string.Format("#0.000000", danjia);
+                                        storedanjia = string.Format(danjia, "#0.000000");
                                     }
                                     else
                                         storejine = ((Convert.ToSingle(reader1["数量"]) + float.Parse(shuliang)) * float.Parse(danjia)).ToString("#0.000000");
@@ -441,7 +325,7 @@ namespace WareHouse.Main
                                 if (float.Parse(danjia) > 0)
                                 {
                                     storejine = (Convert.ToSingle(reader1["数量"]) + float.Parse(danjia) * float.Parse(shuliang)).ToString("#0.000000");
-                                    storedanjia = string.Format("#0.000000", danjia);
+                                    storedanjia = string.Format(danjia,"#0.000000");
                                 }
                             }
                         }
@@ -482,8 +366,8 @@ namespace WareHouse.Main
             tbUnitPrice.Text = "";//单价
             tbPrices.Text = "";//金额
             cbbumen.Text = "";//缴库部门
-            textBox1.Text = "";//入库单编号
-            comboBox2.Text = "";//缴库人
+            tbRukudan.Text = "";//入库单编号
+            cbjiaokuren.Text = "";//缴库人
             tbfapiaobianhao.Text = "";//发票编号
             tbgonghuodanwei.Text = "";//供货单位
             tbzhizaochangjia.Text = "";//制造厂家

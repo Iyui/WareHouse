@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbRukudan = new System.Windows.Forms.TextBox();
             this.tbbeizhu = new System.Windows.Forms.TextBox();
             this.tbzhizaochangjia = new System.Windows.Forms.TextBox();
             this.tbgonghuodanwei = new System.Windows.Forms.TextBox();
@@ -37,7 +37,7 @@
             this.tbJiliangdanwei = new System.Windows.Forms.TextBox();
             this.tbQuantity = new System.Windows.Forms.TextBox();
             this.cbbumen = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cbjiaokuren = new System.Windows.Forms.ComboBox();
             this.cbWuzibianhao = new System.Windows.Forms.ComboBox();
             this.cbPinming = new System.Windows.Forms.ComboBox();
             this.cbGuige = new System.Windows.Forms.ComboBox();
@@ -63,13 +63,13 @@
             this.dateTime = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
-            // textBox1
+            // tbRukudan
             // 
-            this.textBox1.Font = new System.Drawing.Font("宋体", 12F);
-            this.textBox1.Location = new System.Drawing.Point(111, 324);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(230, 26);
-            this.textBox1.TabIndex = 0;
+            this.tbRukudan.Font = new System.Drawing.Font("宋体", 12F);
+            this.tbRukudan.Location = new System.Drawing.Point(111, 324);
+            this.tbRukudan.Name = "tbRukudan";
+            this.tbRukudan.Size = new System.Drawing.Size(230, 26);
+            this.tbRukudan.TabIndex = 11;
             // 
             // tbbeizhu
             // 
@@ -77,7 +77,7 @@
             this.tbbeizhu.Location = new System.Drawing.Point(111, 499);
             this.tbbeizhu.Name = "tbbeizhu";
             this.tbbeizhu.Size = new System.Drawing.Size(634, 26);
-            this.tbbeizhu.TabIndex = 1;
+            this.tbbeizhu.TabIndex = 15;
             // 
             // tbzhizaochangjia
             // 
@@ -85,7 +85,7 @@
             this.tbzhizaochangjia.Location = new System.Drawing.Point(111, 445);
             this.tbzhizaochangjia.Name = "tbzhizaochangjia";
             this.tbzhizaochangjia.Size = new System.Drawing.Size(634, 26);
-            this.tbzhizaochangjia.TabIndex = 2;
+            this.tbzhizaochangjia.TabIndex = 14;
             // 
             // tbgonghuodanwei
             // 
@@ -93,7 +93,7 @@
             this.tbgonghuodanwei.Location = new System.Drawing.Point(111, 383);
             this.tbgonghuodanwei.Name = "tbgonghuodanwei";
             this.tbgonghuodanwei.Size = new System.Drawing.Size(634, 26);
-            this.tbgonghuodanwei.TabIndex = 3;
+            this.tbgonghuodanwei.TabIndex = 13;
             // 
             // tbfapiaobianhao
             // 
@@ -101,7 +101,7 @@
             this.tbfapiaobianhao.Location = new System.Drawing.Point(507, 324);
             this.tbfapiaobianhao.Name = "tbfapiaobianhao";
             this.tbfapiaobianhao.Size = new System.Drawing.Size(238, 26);
-            this.tbfapiaobianhao.TabIndex = 4;
+            this.tbfapiaobianhao.TabIndex = 12;
             // 
             // tbUnitPrice
             // 
@@ -119,7 +119,7 @@
             this.tbJiliangdanwei.Location = new System.Drawing.Point(507, 139);
             this.tbJiliangdanwei.Name = "tbJiliangdanwei";
             this.tbJiliangdanwei.Size = new System.Drawing.Size(238, 26);
-            this.tbJiliangdanwei.TabIndex = 6;
+            this.tbJiliangdanwei.TabIndex = 4;
             // 
             // tbQuantity
             // 
@@ -127,7 +127,7 @@
             this.tbQuantity.Location = new System.Drawing.Point(507, 188);
             this.tbQuantity.Name = "tbQuantity";
             this.tbQuantity.Size = new System.Drawing.Size(238, 26);
-            this.tbQuantity.TabIndex = 7;
+            this.tbQuantity.TabIndex = 6;
             this.tbQuantity.TextChanged += new System.EventHandler(this.tbQuantity_TextChanged);
             this.tbQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbQuantity_KeyPress);
             // 
@@ -144,13 +144,13 @@
             this.cbbumen.Location = new System.Drawing.Point(507, 275);
             this.cbbumen.Name = "cbbumen";
             this.cbbumen.Size = new System.Drawing.Size(238, 24);
-            this.cbbumen.TabIndex = 8;
+            this.cbbumen.TabIndex = 10;
             // 
-            // comboBox2
+            // cbjiaokuren
             // 
-            this.comboBox2.Font = new System.Drawing.Font("宋体", 12F);
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.cbjiaokuren.Font = new System.Drawing.Font("宋体", 12F);
+            this.cbjiaokuren.FormattingEnabled = true;
+            this.cbjiaokuren.Items.AddRange(new object[] {
             "张健",
             "王建平",
             "李恕玉",
@@ -183,10 +183,10 @@
             "王扣才",
             "王源兴",
             "徐红娟"});
-            this.comboBox2.Location = new System.Drawing.Point(111, 275);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(230, 24);
-            this.comboBox2.TabIndex = 9;
+            this.cbjiaokuren.Location = new System.Drawing.Point(111, 275);
+            this.cbjiaokuren.Name = "cbjiaokuren";
+            this.cbjiaokuren.Size = new System.Drawing.Size(230, 24);
+            this.cbjiaokuren.TabIndex = 9;
             // 
             // cbWuzibianhao
             // 
@@ -195,7 +195,7 @@
             this.cbWuzibianhao.Location = new System.Drawing.Point(111, 79);
             this.cbWuzibianhao.Name = "cbWuzibianhao";
             this.cbWuzibianhao.Size = new System.Drawing.Size(230, 24);
-            this.cbWuzibianhao.TabIndex = 11;
+            this.cbWuzibianhao.TabIndex = 0;
             this.cbWuzibianhao.TextChanged += new System.EventHandler(this.cbWuzibianhao_TextChanged);
             // 
             // cbPinming
@@ -205,7 +205,7 @@
             this.cbPinming.Location = new System.Drawing.Point(507, 79);
             this.cbPinming.Name = "cbPinming";
             this.cbPinming.Size = new System.Drawing.Size(238, 24);
-            this.cbPinming.TabIndex = 10;
+            this.cbPinming.TabIndex = 1;
             // 
             // cbGuige
             // 
@@ -214,7 +214,7 @@
             this.cbGuige.Location = new System.Drawing.Point(111, 139);
             this.cbGuige.Name = "cbGuige";
             this.cbGuige.Size = new System.Drawing.Size(230, 24);
-            this.cbGuige.TabIndex = 12;
+            this.cbGuige.TabIndex = 3;
             // 
             // label1
             // 
@@ -402,7 +402,7 @@
             this.tbPrices.Location = new System.Drawing.Point(111, 235);
             this.tbPrices.Name = "tbPrices";
             this.tbPrices.Size = new System.Drawing.Size(230, 26);
-            this.tbPrices.TabIndex = 33;
+            this.tbPrices.TabIndex = 7;
             // 
             // dateTime
             // 
@@ -411,7 +411,7 @@
             this.dateTime.Location = new System.Drawing.Point(507, 238);
             this.dateTime.Name = "dateTime";
             this.dateTime.Size = new System.Drawing.Size(238, 21);
-            this.dateTime.TabIndex = 34;
+            this.dateTime.TabIndex = 8;
             // 
             // GoodsInStore
             // 
@@ -441,7 +441,7 @@
             this.Controls.Add(this.cbGuige);
             this.Controls.Add(this.cbWuzibianhao);
             this.Controls.Add(this.cbPinming);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.cbjiaokuren);
             this.Controls.Add(this.cbbumen);
             this.Controls.Add(this.tbQuantity);
             this.Controls.Add(this.tbJiliangdanwei);
@@ -450,7 +450,7 @@
             this.Controls.Add(this.tbgonghuodanwei);
             this.Controls.Add(this.tbzhizaochangjia);
             this.Controls.Add(this.tbbeizhu);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbRukudan);
             this.Name = "GoodsInStore";
             this.Text = "GoodsInStore";
             this.ResumeLayout(false);
@@ -460,7 +460,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbRukudan;
         private System.Windows.Forms.TextBox tbbeizhu;
         private System.Windows.Forms.TextBox tbzhizaochangjia;
         private System.Windows.Forms.TextBox tbgonghuodanwei;
@@ -469,7 +469,7 @@
         private System.Windows.Forms.TextBox tbJiliangdanwei;
         private System.Windows.Forms.TextBox tbQuantity;
         private System.Windows.Forms.ComboBox cbbumen;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cbjiaokuren;
         private System.Windows.Forms.ComboBox cbWuzibianhao;
         private System.Windows.Forms.ComboBox cbPinming;
         private System.Windows.Forms.ComboBox cbGuige;
