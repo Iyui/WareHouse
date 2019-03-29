@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace WareHouse.Main
+namespace WareHouse.Statement
 {
     static class Program
     {
@@ -15,8 +15,7 @@ namespace WareHouse.Main
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Login());
-            Application.Run(new GoodsInStore());
+            Application.Run(new StatementManage());
         }
     }
 }

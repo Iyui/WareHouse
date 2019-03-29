@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomePage));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -64,6 +65,7 @@
             this.tSB_FZT = new System.Windows.Forms.ToolStripButton();
             this.tsb_Report = new System.Windows.Forms.ToolStripButton();
             this.tsb_Manage = new System.Windows.Forms.ToolStripButton();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -376,6 +378,11 @@
             this.tsb_Manage.Text = "管理";
             this.tsb_Manage.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
             // HomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -441,5 +448,6 @@
         private System.Windows.Forms.ToolStripButton tSB_FZT;
         private System.Windows.Forms.ToolStripButton tsb_Report;
         private System.Windows.Forms.ToolStripButton tsb_Manage;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }

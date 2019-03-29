@@ -37,7 +37,7 @@ namespace WareHouse.Main
             //string connStr = Connection.ConnStr;// windwos 身份验证方式
             using (SqlConnection conn = new SqlConnection(connStr))
             {
-                string sqlStr = string.Format("select * from storehouse where  物资编号='" + cbWuzibianhao.Text.Trim() + "'");//此处可以注入式攻击,以后再改
+                string sqlStr = string.Format("select * from storehouse  where  物资编号='" + cbWuzibianhao.Text.Trim() + "'");//此处可以注入式攻击,以后再改
                 using (SqlCommand command = conn.CreateCommand())
                 {
                     command.CommandText = sqlStr;
