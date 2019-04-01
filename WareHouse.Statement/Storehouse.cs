@@ -50,7 +50,7 @@ namespace WareHouse.Statement
             {
                 dtTemp.ImportRow(dtSource.Rows[i]);
             }
-            dgv_Storehouse.DataSource = dtTemp;  //datagridview控件名是tf_dgv1
+            dgv_Storehouse.DataSource = dtTemp;  
             cbPageNum.Text = currentPage.ToString();//当前页
             toolStripLabel2.Text = "/"+pageCount.ToString();//总页数
             toolStripLabel3.Text = "共 "+recordCount.ToString()+" 条记录";//总记录数//
@@ -80,7 +80,7 @@ namespace WareHouse.Statement
 
         private void Storehouse_Load(object sender, EventArgs e)
         {
-            string str = "select * from storehouse"; //这里是你的查询语句
+            string str = "select * from storehouse"; //查询语句
             LoadPage(str);
         }
 
@@ -105,7 +105,6 @@ namespace WareHouse.Statement
                 LoadPage();
             }
             cbPageNum.SelectionStart = cbPageNum.Text.Length;
-
         }
 
         private void rbAllinventory_CheckedChanged(object sender, EventArgs e)
@@ -135,49 +134,7 @@ namespace WareHouse.Statement
             LoadPage(str);
         }
 
-        public static void dataTableToCsv(DataTable table, string file)
-        {
-            FileInfo fi = new FileInfo(file);
-            string path = fi.DirectoryName;
-            string name = fi.Name;
-            //\/:*?"<>|
-            //把文件名和路径分别取出来处理
-            name = name.Replace(@"\", "＼");
-            name = name.Replace(@"/", "／");
-            name = name.Replace(@":", "：");
-            name = name.Replace(@"*", "＊");
-            name = name.Replace(@"?", "？");
-            name = name.Replace(@"<", "＜");
-            name = name.Replace(@">", "＞");
-            name = name.Replace(@"|", "｜");
-            string title = "";
-
-            FileStream fs = new FileStream(path + "\\" + name, FileMode.Create);
-            StreamWriter sw = new StreamWriter(new BufferedStream(fs), System.Text.Encoding.Default);
-
-            for (int i = 0; i < table.Columns.Count; i++)
-            {
-                title += table.Columns[i].ColumnName + ",";
-            }
-            title = title.Substring(0, title.Length - 1) + "\n";
-            sw.Write(title);
-
-            foreach (DataRow row in table.Rows)
-            {
-                if (row.RowState == DataRowState.Deleted) continue;
-                string line = "";
-                for (int i = 0; i < table.Columns.Count; i++)
-                {
-                    line += row[i].ToString().Replace(",", "") + ",";
-                }
-                line = line.Substring(0, line.Length - 1) + "\n";
-
-                sw.Write(line);
-            }
-
-            sw.Close();
-            fs.Close();
-        }
+       
 
         private void tsb_Export_Click(object sender, EventArgs e)
         {
@@ -189,17 +146,14 @@ namespace WareHouse.Statement
                 };
                 if (DialogResult.OK == sfd.ShowDialog())
                 {
-                    dataTableToCsv(dtSource, sfd.FileName);
+                    dateTabletoCSV.dataTableToCsv(dtSource, sfd.FileName);
                 }
                 MessageBox.Show("导出成功,点击确定后打开文件所在位置");
-                ClickOpenLocation(sfd.FileName);
+                dateTabletoCSV.ClickOpenLocation(sfd.FileName);
             }
             catch { MessageBox.Show("导出失败"); };
         }
 
-        public void ClickOpenLocation(string location)
-        {
-            System.Diagnostics.Process.Start("Explorer", "/select," + @location);
-        }
+        
     }
 }
