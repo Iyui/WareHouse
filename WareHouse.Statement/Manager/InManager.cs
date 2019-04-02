@@ -8,187 +8,25 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using WareHouse.ConnStr;
-namespace WareHouse.Main
+namespace WareHouse.Statement.Manager
 {
-
-    public partial class GoodsInStore : Form
+    public partial class InManager : Form
     {
-        public GoodsInStore()
+        public InManager()
         {
             InitializeComponent();
-            dateTime.CustomFormat = "yyyy-MM-dd";
         }
 
-        #region 变量及属性
         private string connStr = Connection.ConnStr;
         Connection ct = new Connection();
-
-        #endregion
-
-        //输入物资编号自动查询物资类别
-        private void cbWuzibianhao_TextChanged(object sender, EventArgs e)
-        {
-            cbPinming.Items.Clear();
-            cbGuige.Items.Clear();
-            cbPinming.Text = "";
-            cbGuige.Text = "";
-            tbJiliangdanwei.Clear();
-            SqlDataReader reader = null;
-            //string connStr = Connection.ConnStr;// windwos 身份验证方式
-            using (SqlConnection conn = new SqlConnection(connStr))
-            {
-                string sqlStr = string.Format("select * from storehouse  where  物资编号='" + cbWuzibianhao.Text.Trim() + "'");//此处可以注入式攻击,以后再改
-                using (SqlCommand command = conn.CreateCommand())
-                {
-                    command.CommandText = sqlStr;
-                    conn.Open();
-                    reader = command.ExecuteReader();
-
-                    while (reader.Read())
-                    {
-                        var s = reader.GetString(1).Trim();
-                        if (!cbPinming.Items.Contains(s))
-                        {
-                            cbPinming.Items.Add(s);
-                            cbPinming.SelectedIndex = 0;
-                        }
-                        s = reader.GetString(2).Trim();
-                        if (!cbGuige.Items.Contains(s))
-                        {
-                            cbGuige.Items.Add(s);
-                            cbGuige.SelectedIndex = 0;
-                        }
-                        tbJiliangdanwei.Text = reader.GetString(3).Trim();
-                        //tbDanjia.Text = reader.GetString(4).Trim();
-                    }
-                }
-            }
-        }
-
-        private void tbUnitPrice_TextChanged(object sender, EventArgs e)
-        {
-            if (float.TryParse(tbUnitPrice.Text, out float unitprice) &&
-            float.TryParse(tbQuantity.Text, out float quantity))
-            {
-
-                tbPrices.Text = (unitprice * quantity).ToString();
-            }
-            else
-            {
-                tbPrices.Text = "";
-            }
-        }
-
-        //单价仅允许输入数字及小数点
-        private void tbUnitPrice_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 46)
-            {
-                if (e.KeyChar != (char)Keys.Back)
-                {
-                    e.Handled = true;
-                }
-            }
-        }
-
-        //数量仅允许输入数字
-        private void tbQuantity_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsDigit(e.KeyChar))
-            {
-                if (e.KeyChar != (char)Keys.Back)
-                {
-                    e.Handled = true;
-                }
-            }
-        }
-
-        //计算总价=单价*数量
-        private void tbQuantity_TextChanged(object sender, EventArgs e)
-        {
-            if (float.TryParse(tbUnitPrice.Text, out float unitprice) &&
-            int.TryParse(tbQuantity.Text, out int quantity))
-            {
-                tbPrices.Text = (unitprice * quantity).ToString();
-            }
-            else
-            {
-                tbPrices.Text = "";
-            }
-        }
-
-        private void bt_PutIn_Click(object sender, EventArgs e)
-        {
-            var goodcode = cbWuzibianhao.Text.Trim();//物资编号
-            var goodname = cbPinming.Text.Trim();//品名
-            var guige = cbGuige.Text.Trim();//规格
-            var danwei = tbJiliangdanwei.Text.Trim();//计量单位
-            if (String.IsNullOrEmpty(goodcode)
-                && String.IsNullOrEmpty(goodname)
-                && String.IsNullOrEmpty(guige)
-                && String.IsNullOrEmpty(danwei)
-                && String.IsNullOrEmpty(tbUnitPrice.Text.Trim())
-                && String.IsNullOrEmpty(tbQuantity.Text.Trim()))
-            {
-                MessageBox.Show("星号标记的栏目不能为空");
-                return;
-            }
-
-            using (SqlConnection conn = new SqlConnection(connStr))
-            {
-                conn.Open();
-                SqlTransaction tran = conn.BeginTransaction();
-                try
-                {
-                    Get_goods_paras(out SqlParameter[] In_goods_paras, out SqlParameter[] storehouse_paras);
-                    //isMeetConditions();
-                    string ingoodsSql = "INSERT INTO in_goods (" +
-                        "物资编号,品名,规格,计量单位," +
-                        "缴库单价,数量,金额,结存数量,结存金额," +
-                        "缴库日期,供货单位,制造厂家,缴库部门," +
-                        "缴库人,入库单编号,发票编号,备注) " +
-                        "VALUES(" +
-                        "@物资编号,@品名,@规格,@计量单位," +
-                        "@缴库单价,@数量,@金额,@结存数量,@结存金额," +
-                        "@缴库日期,@供货单位,@制造厂家,@缴库部门," +
-                        "@缴库人,@入库单编号,@发票编号,@备注)";
-
-                    string goodstoreSql = $"update storehouse set 数量 = @数量, 库存单价 = @库存单价, 金额 = @金额 WHERE 物资编号 = '{ cbWuzibianhao.Text.Trim()}' ";
-                    var isIngoodSucceed = ct.AddData(conn, tran, ingoodsSql, In_goods_paras);
-                    var isStorehouseSucceed = ct.UpdateData(conn, tran, goodstoreSql, storehouse_paras);
-                    if (isIngoodSucceed && isStorehouseSucceed)
-                    {
-                        tran.Commit();
-                        MessageBox.Show("入库成功");
-                        Clear();
-                    }
-                    else
-                    {
-                        tran.Rollback();
-                        string reason = "";
-                        if (!isIngoodSucceed)
-                            reason += "入库表无写入";
-                        if (!isStorehouseSucceed)
-                            reason += "货物表无写入";
-                        MessageBox.Show($"入库失败:{reason}");
-                    }
-                }
-                catch(Exception ex)
-                {
-                    tran.Rollback(); //有错就回滚
-                    MessageBox.Show($"入库失败:{ex}");
-                }
-                finally { conn.Close(); }
-            }
-        }
-
+        private bool isAddRecord = false;
         private void Get_goods_paras(out SqlParameter[] In_goods_paras, out SqlParameter[] storehouse_paras)
         {
             var goodcode = cbWuzibianhao.Text.Trim();//物资编号
             var goodname = cbPinming.Text.Trim();//品名
             var guige = cbGuige.Text.Trim();//规格
             var danwei = tbJiliangdanwei.Text.Trim();//计量单位
-            
+
             decimal shuliang = decimal.Parse(tbQuantity.Text.Trim());//数量
             decimal danjia = decimal.Parse(tbUnitPrice.Text.Trim());//单价
             decimal jine = decimal.Parse(tbPrices.Text.Trim());//金额
@@ -325,7 +163,7 @@ namespace WareHouse.Main
                                 if (float.Parse(danjia) > 0)
                                 {
                                     storejine = (Convert.ToSingle(reader1["数量"]) + float.Parse(danjia) * float.Parse(shuliang)).ToString("#0.000000");
-                                    storedanjia = string.Format(danjia,"#0.000000");
+                                    storedanjia = string.Format(danjia, "#0.000000");
                                 }
                             }
                         }
@@ -345,32 +183,98 @@ namespace WareHouse.Main
             }
         }
 
-        private void bt_exit_Click(object sender, EventArgs e)
+        private void AddRecord()
         {
-            this.Close();
+            var goodcode = cbWuzibianhao.Text.Trim();//物资编号
+            var goodname = cbPinming.Text.Trim();//品名
+            var guige = cbGuige.Text.Trim();//规格
+            var danwei = tbJiliangdanwei.Text.Trim();//计量单位
+            if (String.IsNullOrEmpty(goodcode)
+                && String.IsNullOrEmpty(goodname)
+                && String.IsNullOrEmpty(guige)
+                && String.IsNullOrEmpty(danwei)
+                && String.IsNullOrEmpty(tbUnitPrice.Text.Trim())
+                && String.IsNullOrEmpty(tbQuantity.Text.Trim()))
+            {
+                MessageBox.Show("星号标记的栏目不能为空");
+                return;
+            }
+
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                conn.Open();
+                SqlTransaction tran = conn.BeginTransaction();
+                try
+                {
+                    Get_goods_paras(out SqlParameter[] In_goods_paras, out SqlParameter[] storehouse_paras);
+                    //isMeetConditions();
+                    string ingoodsSql = "INSERT INTO in_goods (" +
+                        "物资编号,品名,规格,计量单位," +
+                        "缴库单价,数量,金额,结存数量,结存金额," +
+                        "缴库日期,供货单位,制造厂家,缴库部门," +
+                        "缴库人,入库单编号,发票编号,备注) " +
+                        "VALUES(" +
+                        "@物资编号,@品名,@规格,@计量单位," +
+                        "@缴库单价,@数量,@金额,@结存数量,@结存金额," +
+                        "@缴库日期,@供货单位,@制造厂家,@缴库部门," +
+                        "@缴库人,@入库单编号,@发票编号,@备注)";
+
+                    string goodstoreSql = $"update storehouse set 数量 = @数量, 库存单价 = @库存单价, 金额 = @金额 WHERE 物资编号 = '{ cbWuzibianhao.Text.Trim()}' ";
+                    var isIngoodSucceed = ct.AddData(conn, tran, ingoodsSql, In_goods_paras);
+                    var isStorehouseSucceed = ct.UpdateData(conn, tran, goodstoreSql, storehouse_paras);
+                    if (isIngoodSucceed && isStorehouseSucceed)
+                    {
+                        tran.Commit();
+                        MessageBox.Show("入库成功");
+                        Clear();
+                    }
+                    else
+                    {
+                        tran.Rollback();
+                        string reason = "";
+                        if (!isIngoodSucceed)
+                            reason += "入库表无写入";
+                        if (!isStorehouseSucceed)
+                            reason += "货物表无写入";
+                        MessageBox.Show($"入库失败:{reason}");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    tran.Rollback(); //有错就回滚
+                    MessageBox.Show($"入库失败:{ex}");
+                }
+                finally { conn.Close(); }
+            }
         }
 
-        private void bt_Clear_Click(object sender, EventArgs e)
+        private void ModifyRecord()
         {
-            Clear();
-        }
+            var goodcode = cbWuzibianhao.Text.Trim();//物资编号
+            var goodname = cbPinming.Text.Trim();//品名
+            var guige = cbGuige.Text.Trim();//规格
+            var danwei = tbJiliangdanwei.Text.Trim();//计量单位
+            var shuliang = tbQuantity.Text.Trim();//数量
+            var danjia = tbUnitPrice.Text.Trim();//单价
+            var jine = tbPrices.Text.Trim();//金额
+            var bumen = cbbumen.Text.Trim();//缴库部门
+            var rukudan = tbRukudan.Text.Trim();//入库单编号
+            var jiaokuren = cbjiaokuren.Text.Trim();//缴库人
+            var fapiao = tbfapiaobianhao.Text.Trim();//发票编号
+            var gonghuo = tbgonghuodanwei.Text.Trim();//供货单位
+            var zhizao = tbzhizaochangjia.Text.Trim();//制造厂家
+            var beizhu = tbbeizhu.Text.Trim();//备注
+            var time = dateTime.Value.ToString();//缴库日期
 
-        private void Clear()
-        {
-            cbWuzibianhao.Text = "";//物资编号
-            cbPinming.Text = "";//品名
-            cbGuige.Text = "";//规格
-            tbJiliangdanwei.Text = "";//计量单位
-            tbQuantity.Text = "";//数量
-            tbUnitPrice.Text = "";//单价
-            tbPrices.Text = "";//金额
-            cbbumen.Text = "";//缴库部门
-            tbRukudan.Text = "";//入库单编号
-            cbjiaokuren.Text = "";//缴库人
-            tbfapiaobianhao.Text = "";//发票编号
-            tbgonghuodanwei.Text = "";//供货单位
-            tbzhizaochangjia.Text = "";//制造厂家
-            tbbeizhu.Text = "";//备注
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                conn.Open();
+                SqlTransaction tran = conn.BeginTransaction();
+                try
+                {
+                }
+                catch { };
+            }
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace WareHouse.Statement
 {
-    partial class StatementManage
+    partial class StatementQuery
     {
         /// <summary>
         /// Required designer variable.
@@ -32,6 +32,7 @@
             this.tp_In_Information = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
+            this.button1 = new System.Windows.Forms.Button();
             this.InCondition2 = new System.Windows.Forms.CheckBox();
             this.InCondition1 = new System.Windows.Forms.CheckBox();
             this.btQueryIn = new System.Windows.Forms.Button();
@@ -52,6 +53,7 @@
             this.tp_Out_Information = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer6 = new System.Windows.Forms.SplitContainer();
+            this.button2 = new System.Windows.Forms.Button();
             this.btQueryOut = new System.Windows.Forms.Button();
             this.comboBox5 = new System.Windows.Forms.ComboBox();
             this.comboBox6 = new System.Windows.Forms.ComboBox();
@@ -63,6 +65,12 @@
             this.OutCondition1 = new System.Windows.Forms.CheckBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.tp_Goods_Information = new System.Windows.Forms.TabPage();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.splitContainer7 = new System.Windows.Forms.SplitContainer();
@@ -71,9 +79,9 @@
             this.label28 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.btQueryInventory = new System.Windows.Forms.Button();
-            this.comboBox11 = new System.Windows.Forms.ComboBox();
-            this.comboBox9 = new System.Windows.Forms.ComboBox();
-            this.comboBox10 = new System.Windows.Forms.ComboBox();
+            this.cbExpression22 = new System.Windows.Forms.ComboBox();
+            this.cbExpression21 = new System.Windows.Forms.ComboBox();
+            this.cbExpression20 = new System.Windows.Forms.ComboBox();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -85,6 +93,7 @@
             this.tp_Items_Information = new System.Windows.Forms.TabPage();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.splitContainer8 = new System.Windows.Forms.SplitContainer();
+            this.button3 = new System.Windows.Forms.Button();
             this.label26 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.btbtQueryItems = new System.Windows.Forms.Button();
@@ -98,15 +107,6 @@
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.tabcQuery.SuspendLayout();
             this.tp_In_Information.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -226,6 +226,16 @@
             this.splitContainer5.SplitterDistance = 154;
             this.splitContainer5.TabIndex = 2;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(724, 81);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(98, 56);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "导出";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // InCondition2
             // 
             this.InCondition2.AutoSize = true;
@@ -290,6 +300,7 @@
             // 
             // cbcondition2
             // 
+            this.cbcondition2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbcondition2.FormattingEnabled = true;
             this.cbcondition2.Items.AddRange(new object[] {
             "物资编号",
@@ -304,6 +315,7 @@
             // 
             // cbcondition1
             // 
+            this.cbcondition1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbcondition1.FormattingEnabled = true;
             this.cbcondition1.Items.AddRange(new object[] {
             "物资编号",
@@ -452,6 +464,16 @@
             this.splitContainer6.SplitterDistance = 154;
             this.splitContainer6.TabIndex = 3;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(714, 73);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(98, 56);
+            this.button2.TabIndex = 18;
+            this.button2.Text = "导出";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // btQueryOut
             // 
             this.btQueryOut.Location = new System.Drawing.Point(714, 11);
@@ -494,6 +516,7 @@
             // 
             // comboBox7
             // 
+            this.comboBox7.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox7.FormattingEnabled = true;
             this.comboBox7.Items.AddRange(new object[] {
             "物资编号",
@@ -508,6 +531,7 @@
             // 
             // comboBox8
             // 
+            this.comboBox8.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox8.FormattingEnabled = true;
             this.comboBox8.Items.AddRange(new object[] {
             "物资编号",
@@ -566,6 +590,60 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "结果汇总";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(757, 35);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(19, 19);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "0";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(662, 35);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(76, 19);
+            this.label8.TabIndex = 10;
+            this.label8.Text = "总金额:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(469, 35);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(19, 19);
+            this.label9.TabIndex = 9;
+            this.label9.Text = "0";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(374, 35);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(76, 19);
+            this.label10.TabIndex = 8;
+            this.label10.Text = "总数量:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(163, 35);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(19, 19);
+            this.label11.TabIndex = 7;
+            this.label11.Text = "0";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(68, 35);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(76, 19);
+            this.label12.TabIndex = 6;
+            this.label12.Text = "记录数:";
+            // 
             // tp_Goods_Information
             // 
             this.tp_Goods_Information.Controls.Add(this.splitContainer3);
@@ -608,9 +686,9 @@
             this.splitContainer7.Panel1.Controls.Add(this.label28);
             this.splitContainer7.Panel1.Controls.Add(this.button4);
             this.splitContainer7.Panel1.Controls.Add(this.btQueryInventory);
-            this.splitContainer7.Panel1.Controls.Add(this.comboBox11);
-            this.splitContainer7.Panel1.Controls.Add(this.comboBox9);
-            this.splitContainer7.Panel1.Controls.Add(this.comboBox10);
+            this.splitContainer7.Panel1.Controls.Add(this.cbExpression22);
+            this.splitContainer7.Panel1.Controls.Add(this.cbExpression21);
+            this.splitContainer7.Panel1.Controls.Add(this.cbExpression20);
             // 
             // splitContainer7.Panel2
             // 
@@ -654,6 +732,7 @@
             this.button4.TabIndex = 19;
             this.button4.Text = "导出";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // btQueryInventory
             // 
@@ -665,29 +744,29 @@
             this.btQueryInventory.UseVisualStyleBackColor = true;
             this.btQueryInventory.Click += new System.EventHandler(this.btQuery_Click);
             // 
-            // comboBox11
+            // cbExpression22
             // 
-            this.comboBox11.FormattingEnabled = true;
-            this.comboBox11.Location = new System.Drawing.Point(206, 114);
-            this.comboBox11.Name = "comboBox11";
-            this.comboBox11.Size = new System.Drawing.Size(140, 27);
-            this.comboBox11.TabIndex = 15;
+            this.cbExpression22.FormattingEnabled = true;
+            this.cbExpression22.Location = new System.Drawing.Point(206, 114);
+            this.cbExpression22.Name = "cbExpression22";
+            this.cbExpression22.Size = new System.Drawing.Size(140, 27);
+            this.cbExpression22.TabIndex = 15;
             // 
-            // comboBox9
+            // cbExpression21
             // 
-            this.comboBox9.FormattingEnabled = true;
-            this.comboBox9.Location = new System.Drawing.Point(206, 69);
-            this.comboBox9.Name = "comboBox9";
-            this.comboBox9.Size = new System.Drawing.Size(140, 27);
-            this.comboBox9.TabIndex = 14;
+            this.cbExpression21.FormattingEnabled = true;
+            this.cbExpression21.Location = new System.Drawing.Point(206, 69);
+            this.cbExpression21.Name = "cbExpression21";
+            this.cbExpression21.Size = new System.Drawing.Size(140, 27);
+            this.cbExpression21.TabIndex = 14;
             // 
-            // comboBox10
+            // cbExpression20
             // 
-            this.comboBox10.FormattingEnabled = true;
-            this.comboBox10.Location = new System.Drawing.Point(206, 24);
-            this.comboBox10.Name = "comboBox10";
-            this.comboBox10.Size = new System.Drawing.Size(140, 27);
-            this.comboBox10.TabIndex = 13;
+            this.cbExpression20.FormattingEnabled = true;
+            this.cbExpression20.Location = new System.Drawing.Point(206, 24);
+            this.cbExpression20.Name = "cbExpression20";
+            this.cbExpression20.Size = new System.Drawing.Size(140, 27);
+            this.cbExpression20.TabIndex = 13;
             // 
             // dataGridView3
             // 
@@ -821,6 +900,16 @@
             this.splitContainer8.SplitterDistance = 154;
             this.splitContainer8.TabIndex = 3;
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(724, 48);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(98, 56);
+            this.button3.TabIndex = 23;
+            this.button3.Text = "导出";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // label26
             // 
             this.label26.AutoSize = true;
@@ -860,6 +949,7 @@
             // 
             // comboBox13
             // 
+            this.comboBox13.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox13.FormattingEnabled = true;
             this.comboBox13.Items.AddRange(new object[] {
             "项目型号",
@@ -951,90 +1041,6 @@
             this.label24.Size = new System.Drawing.Size(76, 19);
             this.label24.TabIndex = 0;
             this.label24.Text = "总共有:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(757, 35);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(19, 19);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "0";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(662, 35);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(76, 19);
-            this.label8.TabIndex = 10;
-            this.label8.Text = "总金额:";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(469, 35);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(19, 19);
-            this.label9.TabIndex = 9;
-            this.label9.Text = "0";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(374, 35);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(76, 19);
-            this.label10.TabIndex = 8;
-            this.label10.Text = "总数量:";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(163, 35);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(19, 19);
-            this.label11.TabIndex = 7;
-            this.label11.Text = "0";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(68, 35);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(76, 19);
-            this.label12.TabIndex = 6;
-            this.label12.Text = "记录数:";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(724, 81);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(98, 56);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "导出";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(714, 73);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(98, 56);
-            this.button2.TabIndex = 18;
-            this.button2.Text = "导出";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(724, 48);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(98, 56);
-            this.button3.TabIndex = 23;
-            this.button3.Text = "导出";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // StatementManage
             // 
@@ -1146,9 +1152,9 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button btQueryInventory;
-        private System.Windows.Forms.ComboBox comboBox11;
-        private System.Windows.Forms.ComboBox comboBox9;
-        private System.Windows.Forms.ComboBox comboBox10;
+        private System.Windows.Forms.ComboBox cbExpression22;
+        private System.Windows.Forms.ComboBox cbExpression21;
+        private System.Windows.Forms.ComboBox cbExpression20;
         private System.Windows.Forms.DataGridView dataGridView3;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label13;

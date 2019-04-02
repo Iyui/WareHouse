@@ -48,13 +48,44 @@
   <ItemGroup>
     <Compile Include="DataTableExportPDF.cs" />
     <Compile Include="dateTabletoCSV.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StatementManage.cs">
+    <Compile Include="Manager\InManager.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="StatementManage.Designer.cs">
-      <DependentUpon>StatementManage.cs</DependentUpon>
+    <Compile Include="Manager\InManager.Designer.cs">
+      <DependentUpon>InManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\ItemManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manager\ItemManager.Designer.cs">
+      <DependentUpon>ItemManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\OutManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manager\OutManager.Designer.cs">
+      <DependentUpon>OutManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\StoreManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manager\StoreManager.Designer.cs">
+      <DependentUpon>StoreManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\VBRemark.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StatementQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StatementQuery.Designer.cs">
+      <DependentUpon>StatementQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StatementStatistics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StatementStatistics.Designer.cs">
+      <DependentUpon>StatementStatistics.cs</DependentUpon>
     </Compile>
     <Compile Include="Storehouse.cs">
       <SubType>Form</SubType>
@@ -67,6 +98,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>storemanageDataSet.xsd</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Manager\InManager.resx">
+      <DependentUpon>InManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager\StoreManager.resx">
+      <DependentUpon>StoreManager.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -76,8 +113,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="StatementManage.resx">
-      <DependentUpon>StatementManage.cs</DependentUpon>
+    <EmbeddedResource Include="StatementQuery.resx">
+      <DependentUpon>StatementQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StatementStatistics.resx">
+      <DependentUpon>StatementStatistics.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Storehouse.resx">
       <DependentUpon>Storehouse.cs</DependentUpon>

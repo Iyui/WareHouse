@@ -351,7 +351,7 @@ namespace WareHouse.Main
                 }
                 //  }
                 SqlTransaction tran = conn.BeginTransaction();
-                if (MessageBox.Show("此项目不存在！如果确定项目型号和批号输入无误的话，请按‘Y’加入此项目；否则按‘N’退出重新输入！", "提示", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show("此项目不存在！如果确定项目型号和批号输入无误的话，请按 [是] 加入此项目；否则按 [否] 退出重新输入！", "提示", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     string itemSql = $"INSERT INTO item_information(项目编号,项目型号 ,项目批号,已完成) VALUES(@项目编号,@项目型号 ,@项目批号,@已完成) ";
                     ItemsCount = cbXiangmu.Items.Count;

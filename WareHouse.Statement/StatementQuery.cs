@@ -10,9 +10,9 @@ using System.Data.SqlClient;
 using WareHouse.ConnStr;
 namespace WareHouse.Statement
 {
-    public partial class StatementManage : Form
+    public partial class StatementQuery : Form
     {
-        public StatementManage()
+        public StatementQuery()
         {
             InitializeComponent();
             IndateTime1.CustomFormat = "yyyy-MM-dd";
@@ -75,7 +75,8 @@ namespace WareHouse.Statement
                 var expression2 = cbExpression2.Text.Trim();
                 datetime1 = IndateTime1.Value.ToString();
                 datetime2 = IndateTime2.Value.ToString();
-
+                strSqlQuery = "select * from in_goods order by 缴库日期,物资编号";
+                strSqlCount = "select count(*)as 记录数,sum(数量)as 缴库总数量,sum(金额)as 总金额 from in_goods ";
                 if (isCondition1Checked && !isCondition2Checked)//只有条件1
                 {
                     if (!isExpretion1Empty && isExpretion2Empty)
@@ -153,7 +154,8 @@ namespace WareHouse.Statement
                 var expression2 = comboBox5.Text.Trim();
                 datetime1 = OutdateTime1.Value.ToString();
                 datetime2 = OutdateTime2.Value.ToString();
-
+                strSqlQuery = "select * from out_goods order by 物资编号";
+                strSqlCount = "select count(*)as 记录数,sum(数量)as 领料总数量,sum(金额)as 总金额 from out_goods ";
                 if (isCondition1Checked && !isCondition2Checked)
                 {
                     if (!isExpretion1Empty && isExpretion2Empty)
@@ -213,7 +215,50 @@ namespace WareHouse.Statement
             }
             else if (tabcQuery.SelectedTab == tp_Goods_Information)
             {
-
+                var str = "";
+                strSqlQuery = "select * from storehouse ";
+                strSqlCount = "select count(*)as 记录数,sum(数量)as 库存总数量,sum(金额)as 总金额 from storehouse ";
+                var expression1 = cbExpression20.Text.Trim();
+                var expression2 = cbExpression21.Text.Trim();
+                var expression3 = cbExpression22.Text.Trim();
+                var isExpretion1Empty = String.IsNullOrEmpty(expression1);
+                var isExpretion2Empty = String.IsNullOrEmpty(expression2);
+                var isExpretion3Empty = String.IsNullOrEmpty(expression3);
+                if (!isExpretion1Empty)
+                {
+                    str = "where storehouse.物资编号 like '%" + expression1 + "%' ";
+                    strSqlQuery += str;
+                    strSqlCount += str;
+                }
+                if (!isExpretion2Empty)
+                {
+                    if (!isExpretion1Empty)
+                    {
+                        str = "And (storehouse.品名  like  '%" + expression2 + "%') ";
+                    }
+                    else
+                    {
+                        str = "where (storehouse.品名 like '%" + expression2 + "%') ";
+                    }
+                    strSqlQuery += str;
+                    strSqlCount += str;
+                }
+                if (!isExpretion3Empty)
+                {
+                    if (!isExpretion1Empty || !isExpretion2Empty)
+                    {
+                        str = "And (storehouse.规格 like '%" + expression3 + "%')";
+                    }
+                    else
+                    {
+                        str = "WHERE (storehouse.规格 like '%" + expression3 + "%')";
+                    }
+                    strSqlQuery += str;
+                    strSqlCount += str;
+                }
+                strSqlQuery += "order by 物资编号 ";
+                ConditionQuery(dataGridView3);
+                ConditionCount(label17, label15, label13);
             }
             else if (tabcQuery.SelectedTab == tp_Items_Information)
             {
@@ -223,8 +268,16 @@ namespace WareHouse.Statement
                     strSqlQuery = "select * from item_information where  (item_information." + comboBox13.Text + " like '%" + comboBox12.Text.Trim() + "%')";
                     ConditionQuery(dataGridView4);
                     ConditionCount(label23);
-                    strSqlCount = "select * from item_information where  (item_information." + comboBox13.Text + " like '%" + comboBox12.Text.Trim() + "%') and 已完成 = 1";
-
+                    strSqlCount = "select count(*)as 完成数 from item_information where  (item_information." + comboBox13.Text + " like '%" + comboBox12.Text.Trim() + "%') and 已完成 = 1";
+                    ConditionCount(label20);
+                }
+                else
+                {
+                    strSqlCount = "select count(*)as 记录数 from item_information";
+                    strSqlQuery = "select * from item_information";
+                    ConditionQuery(dataGridView4);
+                    ConditionCount(label23);
+                    strSqlCount = "select count(*)as 完成数 from item_information where 已完成 = 1";
                     ConditionCount(label20);
                 }
             }
@@ -298,19 +351,19 @@ namespace WareHouse.Statement
         DataTable dtSource = new DataTable();
         private void ExportCSV()
         {
-  
             try
             {
                 SaveFileDialog sfd = new SaveFileDialog()
                 {
                     Filter = "(逗号分隔值)*.csv|*.csv"
                 };
+                sfd.RestoreDirectory = true;
                 if (DialogResult.OK == sfd.ShowDialog())
                 {
                     dateTabletoCSV.dataTableToCsv(dtSource, sfd.FileName);
+                    if (MessageBox.Show("导出成功,点击 [是] 后打开文件所在位置", "导出成功", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        dateTabletoCSV.ClickOpenLocation(sfd.FileName);
                 }
-                MessageBox.Show("导出成功,点击确定后打开文件所在位置");
-                dateTabletoCSV.ClickOpenLocation(sfd.FileName);
             }
             catch { MessageBox.Show("导出失败"); };
         }
@@ -354,6 +407,12 @@ namespace WareHouse.Statement
                 dt.Rows.Add(dr);
             }
             return dt;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            dtSource = GetDgvToTable(dataGridView3);
+            ExportCSV();
         }
     }
 }
