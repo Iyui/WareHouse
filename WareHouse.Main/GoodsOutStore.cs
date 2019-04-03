@@ -372,8 +372,8 @@ namespace WareHouse.Main
 
             }
             return true;
-
         }
+
         Connection ct = new Connection();
         private SqlParameter[] Item_para(int itemNum,out string item)
         {

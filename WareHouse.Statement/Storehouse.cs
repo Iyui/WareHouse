@@ -17,6 +17,7 @@ namespace WareHouse.Statement
         public Storehouse()
         {
             InitializeComponent();
+            ConditionCount(label17, label15, label13, label1);
         }
 
         private string connStr = Connection.ConnStr;
@@ -55,6 +56,7 @@ namespace WareHouse.Statement
             toolStripLabel2.Text = "/"+pageCount.ToString();//总页数
             toolStripLabel3.Text = "共 "+recordCount.ToString()+" 条记录";//总记录数//
             dgv_Storehouse.Focus();
+            
         }
 
         /// <summary>
@@ -81,6 +83,7 @@ namespace WareHouse.Statement
         private void Storehouse_Load(object sender, EventArgs e)
         {
             string str = "select * from storehouse"; //查询语句
+            strSqlCount = "select count(*)as 记录数,sum(数量)as 库存总数量,sum(金额)as 总金额 from storehouse ";
             LoadPage(str);
         }
 
@@ -110,6 +113,7 @@ namespace WareHouse.Statement
         private void rbAllinventory_CheckedChanged(object sender, EventArgs e)
         {
             string str = "select * from storehouse"; //这里是你的查询语句
+            strSqlCount = "select count(*)as 记录数,sum(数量)as 库存总数量,sum(金额)as 总金额 from storehouse ";
             LoadPage(str);
         }
 
@@ -125,16 +129,23 @@ namespace WareHouse.Statement
         private void rbinventory_CheckedChanged(object sender, EventArgs e)
         {
             string str = "select * from storehouse where 数量 > 0"; //这里是你的查询语句
+            strSqlCount = "select count(*)as 记录数,sum(数量)as 库存总数量,sum(金额)as 总金额 from storehouse where 数量 > 0";
             LoadPage(str);
         }
 
         private void rbNoinventory_CheckedChanged(object sender, EventArgs e)
         {
             string str = "select * from storehouse where 数量 = 0"; //这里是你的查询语句
+            strSqlCount = "select count(*)as 记录数,sum(数量)as 库存总数量,sum(金额)as 总金额 from storehouse where 数量 = 0";
+
             LoadPage(str);
         }
 
-       
+
+        public string strSqlCount
+        {
+            set; get;
+        }
 
         private void tsb_Export_Click(object sender, EventArgs e)
         {
@@ -154,6 +165,31 @@ namespace WareHouse.Statement
             catch { MessageBox.Show("导出失败"); };
         }
 
-        
+        private void ConditionCount(Label lb1, Label lb2, Label lb3, Label lb4)
+        {
+            strSqlCount = "select count(*)as 记录数,sum(数量)as 库存总数量,sum(金额)as 总金额 from storehouse ";
+            SqlDataReader reader = null;
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                SqlCommand storers = conn.CreateCommand();
+                storers.CommandText = strSqlCount;
+                conn.Open();
+                using (reader = storers.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        lb1.Text = reader[0].ToString().Trim();
+                        lb2.Text = reader[1].ToString().Trim();
+                        lb3.Text = reader[2].ToString().Trim();
+                    }
+                }
+                strSqlCount = "select count(*) as 未标价 from storehouse where 库存单价 is null or 库存单价 = 0 and 数量 > 0";
+                storers.CommandText = strSqlCount;
+                using (reader = storers.ExecuteReader())
+                {
+                    lb4.Text = Convert.ToString(reader[0]).Trim();
+                }
+            }
+        }
     }
 }

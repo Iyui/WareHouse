@@ -287,6 +287,7 @@ namespace WareHouse.Statement
 
         private void ConditionQuery(DataGridView dgv)
         {
+            dgv.Rows.Clear();
             SqlDataReader reader = null;
             using (SqlConnection conn = new SqlConnection(connStr))
             {
@@ -413,6 +414,102 @@ namespace WareHouse.Statement
         {
             dtSource = GetDgvToTable(dataGridView3);
             ExportCSV();
+        }
+
+        private void DeleteInformation(DataGridView dgv,string cellname,string storename)
+        {
+            string str = dgv.CurrentRow.Cells[cellname].Value.ToString();
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                conn.Open();
+                SqlTransaction tran = conn.BeginTransaction();
+                try
+                {
+                    var Purview_paras = new SqlParameter[]
+                    {
+
+                    };
+                    string DeleteSqlStr = $"DELETE FROM {storename} WHERE {cellname} = {str}";
+                    if(cellname == "物资编号")
+                        DeleteSqlStr = $"DELETE FROM {storename} WHERE {cellname} = '{str}'";
+                    var isUpdateSucceed = ct.DeleteData(conn, tran, DeleteSqlStr, Purview_paras);
+                    if (isUpdateSucceed)
+                    {
+                        tran.Commit();
+                        MessageBox.Show("删除记录成功");
+                        //Close();
+                    }
+                    else
+                    {
+                        tran.Rollback();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    tran.Rollback();
+                    MessageBox.Show($"删除记录失败:{ex}");
+                };
+            }
+        }
+
+        private bool ConditionCount(string str)
+        {
+            SqlDataReader reader = null;
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                SqlCommand storers = conn.CreateCommand();
+                storers.CommandText = $"select 数量 FROM storehouse where 物资编号 ='{str}'";
+                conn.Open();
+                using (reader = storers.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        decimal dl = (decimal)reader["数量"];
+                        if (dl > 0)
+                            return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            string str = this.dataGridView1.CurrentRow.Cells["物资编号"].Value.ToString();
+            if (ConditionCount(str))
+            {
+                MessageBox.Show("该物资还有库存！为了不影响其他操作，请等该物资无库存的时候再删除此记录！");
+                return;
+            }
+            if (MessageBox.Show("该操作执行后无法恢复,是否继续?","提示", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                DeleteInformation(dataGridView1, "入库序号","in_goods");
+            btQuery_Click(sender, e);
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            string str = this.dataGridView2.CurrentRow.Cells["物资编号"].Value.ToString();
+            if (ConditionCount(str))
+            {
+                MessageBox.Show("该物资还有库存！为了不影响其他操作，请等该物资无库存的时候再删除此记录！");
+                return;
+            }
+            if (MessageBox.Show("该操作执行后无法恢复,是否继续?","提示", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                DeleteInformation(dataGridView2, "出库序号", "out_goods");
+            btQuery_Click(sender, e);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            string str = this.dataGridView3.CurrentRow.Cells["物资编号"].Value.ToString();
+            if (ConditionCount(str))
+            {
+                MessageBox.Show("该物资还有库存！为了不影响其他操作，请等该物资无库存的时候再删除此记录！");
+                return;
+            }
+            if (MessageBox.Show("该操作执行后无法恢复,是否继续?","提示", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                DeleteInformation(dataGridView3, "物资编号", "storehouse");
+            btQuery_Click(sender, e);
         }
     }
 }

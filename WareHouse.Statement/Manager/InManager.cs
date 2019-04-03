@@ -226,7 +226,7 @@ namespace WareHouse.Statement.Manager
                     {
                         tran.Commit();
                         MessageBox.Show("入库成功");
-                        Clear();
+                        //Clear();
                     }
                     else
                     {

@@ -107,6 +107,12 @@
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
             this.tabcQuery.SuspendLayout();
             this.tp_In_Information.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -166,7 +172,7 @@
             this.tabcQuery.Location = new System.Drawing.Point(0, 0);
             this.tabcQuery.Name = "tabcQuery";
             this.tabcQuery.SelectedIndex = 0;
-            this.tabcQuery.Size = new System.Drawing.Size(867, 681);
+            this.tabcQuery.Size = new System.Drawing.Size(895, 681);
             this.tabcQuery.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabcQuery.TabIndex = 0;
             // 
@@ -176,7 +182,7 @@
             this.tp_In_Information.Location = new System.Drawing.Point(4, 34);
             this.tp_In_Information.Name = "tp_In_Information";
             this.tp_In_Information.Padding = new System.Windows.Forms.Padding(3);
-            this.tp_In_Information.Size = new System.Drawing.Size(859, 643);
+            this.tp_In_Information.Size = new System.Drawing.Size(887, 643);
             this.tp_In_Information.TabIndex = 0;
             this.tp_In_Information.Text = "入库信息查询";
             this.tp_In_Information.UseVisualStyleBackColor = true;
@@ -195,7 +201,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.groupBox1);
-            this.splitContainer1.Size = new System.Drawing.Size(853, 637);
+            this.splitContainer1.Size = new System.Drawing.Size(881, 637);
             this.splitContainer1.SplitterDistance = 560;
             this.splitContainer1.TabIndex = 1;
             // 
@@ -208,6 +214,8 @@
             // 
             // splitContainer5.Panel1
             // 
+            this.splitContainer5.Panel1.Controls.Add(this.button9);
+            this.splitContainer5.Panel1.Controls.Add(this.button10);
             this.splitContainer5.Panel1.Controls.Add(this.button1);
             this.splitContainer5.Panel1.Controls.Add(this.InCondition2);
             this.splitContainer5.Panel1.Controls.Add(this.InCondition1);
@@ -222,13 +230,13 @@
             // splitContainer5.Panel2
             // 
             this.splitContainer5.Panel2.Controls.Add(this.dataGridView1);
-            this.splitContainer5.Size = new System.Drawing.Size(853, 560);
+            this.splitContainer5.Size = new System.Drawing.Size(881, 560);
             this.splitContainer5.SplitterDistance = 154;
             this.splitContainer5.TabIndex = 2;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(724, 81);
+            this.button1.Location = new System.Drawing.Point(641, 81);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(98, 56);
             this.button1.TabIndex = 13;
@@ -258,7 +266,7 @@
             // 
             // btQueryIn
             // 
-            this.btQueryIn.Location = new System.Drawing.Point(724, 16);
+            this.btQueryIn.Location = new System.Drawing.Point(641, 16);
             this.btQueryIn.Name = "btQueryIn";
             this.btQueryIn.Size = new System.Drawing.Size(98, 56);
             this.btQueryIn.TabIndex = 8;
@@ -269,7 +277,7 @@
             // cbExpression2
             // 
             this.cbExpression2.FormattingEnabled = true;
-            this.cbExpression2.Location = new System.Drawing.Point(505, 62);
+            this.cbExpression2.Location = new System.Drawing.Point(464, 62);
             this.cbExpression2.Name = "cbExpression2";
             this.cbExpression2.Size = new System.Drawing.Size(140, 27);
             this.cbExpression2.TabIndex = 7;
@@ -277,7 +285,7 @@
             // cbExpression1
             // 
             this.cbExpression1.FormattingEnabled = true;
-            this.cbExpression1.Location = new System.Drawing.Point(505, 17);
+            this.cbExpression1.Location = new System.Drawing.Point(464, 17);
             this.cbExpression1.Name = "cbExpression1";
             this.cbExpression1.Size = new System.Drawing.Size(140, 27);
             this.cbExpression1.TabIndex = 6;
@@ -285,15 +293,15 @@
             // IndateTime2
             // 
             this.IndateTime2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.IndateTime2.Location = new System.Drawing.Point(505, 99);
+            this.IndateTime2.Location = new System.Drawing.Point(464, 99);
             this.IndateTime2.Name = "IndateTime2";
-            this.IndateTime2.Size = new System.Drawing.Size(156, 29);
+            this.IndateTime2.Size = new System.Drawing.Size(140, 29);
             this.IndateTime2.TabIndex = 5;
             // 
             // IndateTime1
             // 
             this.IndateTime1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.IndateTime1.Location = new System.Drawing.Point(249, 99);
+            this.IndateTime1.Location = new System.Drawing.Point(208, 99);
             this.IndateTime1.Name = "IndateTime1";
             this.IndateTime1.Size = new System.Drawing.Size(157, 29);
             this.IndateTime1.TabIndex = 4;
@@ -308,7 +316,7 @@
             "规格",
             "供货单位",
             "制造厂家"});
-            this.cbcondition2.Location = new System.Drawing.Point(249, 62);
+            this.cbcondition2.Location = new System.Drawing.Point(208, 62);
             this.cbcondition2.Name = "cbcondition2";
             this.cbcondition2.Size = new System.Drawing.Size(140, 27);
             this.cbcondition2.TabIndex = 3;
@@ -323,7 +331,7 @@
             "规格",
             "供货单位",
             "制造厂家"});
-            this.cbcondition1.Location = new System.Drawing.Point(249, 17);
+            this.cbcondition1.Location = new System.Drawing.Point(208, 17);
             this.cbcondition1.Name = "cbcondition1";
             this.cbcondition1.Size = new System.Drawing.Size(140, 27);
             this.cbcondition1.TabIndex = 2;
@@ -335,7 +343,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(853, 402);
+            this.dataGridView1.Size = new System.Drawing.Size(881, 402);
             this.dataGridView1.TabIndex = 0;
             // 
             // groupBox1
@@ -349,7 +357,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(853, 73);
+            this.groupBox1.Size = new System.Drawing.Size(881, 73);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "结果汇总";
@@ -414,7 +422,7 @@
             this.tp_Out_Information.Location = new System.Drawing.Point(4, 34);
             this.tp_Out_Information.Name = "tp_Out_Information";
             this.tp_Out_Information.Padding = new System.Windows.Forms.Padding(3);
-            this.tp_Out_Information.Size = new System.Drawing.Size(859, 643);
+            this.tp_Out_Information.Size = new System.Drawing.Size(887, 643);
             this.tp_Out_Information.TabIndex = 1;
             this.tp_Out_Information.Text = "出库信息查询";
             this.tp_Out_Information.UseVisualStyleBackColor = true;
@@ -433,7 +441,7 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.groupBox2);
-            this.splitContainer2.Size = new System.Drawing.Size(853, 637);
+            this.splitContainer2.Size = new System.Drawing.Size(881, 637);
             this.splitContainer2.SplitterDistance = 561;
             this.splitContainer2.TabIndex = 1;
             // 
@@ -446,6 +454,8 @@
             // 
             // splitContainer6.Panel1
             // 
+            this.splitContainer6.Panel1.Controls.Add(this.button7);
+            this.splitContainer6.Panel1.Controls.Add(this.button8);
             this.splitContainer6.Panel1.Controls.Add(this.button2);
             this.splitContainer6.Panel1.Controls.Add(this.btQueryOut);
             this.splitContainer6.Panel1.Controls.Add(this.comboBox5);
@@ -460,13 +470,13 @@
             // splitContainer6.Panel2
             // 
             this.splitContainer6.Panel2.Controls.Add(this.dataGridView2);
-            this.splitContainer6.Size = new System.Drawing.Size(853, 561);
+            this.splitContainer6.Size = new System.Drawing.Size(881, 561);
             this.splitContainer6.SplitterDistance = 154;
             this.splitContainer6.TabIndex = 3;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(714, 73);
+            this.button2.Location = new System.Drawing.Point(617, 82);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(98, 56);
             this.button2.TabIndex = 18;
@@ -476,7 +486,7 @@
             // 
             // btQueryOut
             // 
-            this.btQueryOut.Location = new System.Drawing.Point(714, 11);
+            this.btQueryOut.Location = new System.Drawing.Point(617, 14);
             this.btQueryOut.Name = "btQueryOut";
             this.btQueryOut.Size = new System.Drawing.Size(98, 56);
             this.btQueryOut.TabIndex = 17;
@@ -487,7 +497,7 @@
             // comboBox5
             // 
             this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(482, 67);
+            this.comboBox5.Location = new System.Drawing.Point(429, 66);
             this.comboBox5.Name = "comboBox5";
             this.comboBox5.Size = new System.Drawing.Size(140, 27);
             this.comboBox5.TabIndex = 16;
@@ -495,21 +505,21 @@
             // comboBox6
             // 
             this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(482, 22);
+            this.comboBox6.Location = new System.Drawing.Point(429, 21);
             this.comboBox6.Name = "comboBox6";
             this.comboBox6.Size = new System.Drawing.Size(140, 27);
             this.comboBox6.TabIndex = 15;
             // 
             // OutdateTime2
             // 
-            this.OutdateTime2.Location = new System.Drawing.Point(482, 104);
+            this.OutdateTime2.Location = new System.Drawing.Point(429, 103);
             this.OutdateTime2.Name = "OutdateTime2";
             this.OutdateTime2.Size = new System.Drawing.Size(152, 29);
             this.OutdateTime2.TabIndex = 14;
             // 
             // OutdateTime1
             // 
-            this.OutdateTime1.Location = new System.Drawing.Point(226, 104);
+            this.OutdateTime1.Location = new System.Drawing.Point(173, 103);
             this.OutdateTime1.Name = "OutdateTime1";
             this.OutdateTime1.Size = new System.Drawing.Size(157, 29);
             this.OutdateTime1.TabIndex = 13;
@@ -524,7 +534,7 @@
             "规格",
             "项目编号",
             "领料人"});
-            this.comboBox7.Location = new System.Drawing.Point(226, 67);
+            this.comboBox7.Location = new System.Drawing.Point(173, 66);
             this.comboBox7.Name = "comboBox7";
             this.comboBox7.Size = new System.Drawing.Size(140, 27);
             this.comboBox7.TabIndex = 12;
@@ -539,7 +549,7 @@
             "规格",
             "项目编号",
             "领料人"});
-            this.comboBox8.Location = new System.Drawing.Point(226, 22);
+            this.comboBox8.Location = new System.Drawing.Point(173, 21);
             this.comboBox8.Name = "comboBox8";
             this.comboBox8.Size = new System.Drawing.Size(140, 27);
             this.comboBox8.TabIndex = 11;
@@ -571,7 +581,7 @@
             this.dataGridView2.Location = new System.Drawing.Point(0, 0);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowTemplate.Height = 23;
-            this.dataGridView2.Size = new System.Drawing.Size(853, 403);
+            this.dataGridView2.Size = new System.Drawing.Size(881, 403);
             this.dataGridView2.TabIndex = 1;
             // 
             // groupBox2
@@ -585,7 +595,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(853, 72);
+            this.groupBox2.Size = new System.Drawing.Size(881, 72);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "结果汇总";
@@ -649,7 +659,7 @@
             this.tp_Goods_Information.Controls.Add(this.splitContainer3);
             this.tp_Goods_Information.Location = new System.Drawing.Point(4, 34);
             this.tp_Goods_Information.Name = "tp_Goods_Information";
-            this.tp_Goods_Information.Size = new System.Drawing.Size(859, 643);
+            this.tp_Goods_Information.Size = new System.Drawing.Size(887, 643);
             this.tp_Goods_Information.TabIndex = 2;
             this.tp_Goods_Information.Text = "库存信息查询";
             this.tp_Goods_Information.UseVisualStyleBackColor = true;
@@ -668,7 +678,7 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.groupBox3);
-            this.splitContainer3.Size = new System.Drawing.Size(859, 643);
+            this.splitContainer3.Size = new System.Drawing.Size(887, 643);
             this.splitContainer3.SplitterDistance = 561;
             this.splitContainer3.TabIndex = 1;
             // 
@@ -681,6 +691,8 @@
             // 
             // splitContainer7.Panel1
             // 
+            this.splitContainer7.Panel1.Controls.Add(this.button5);
+            this.splitContainer7.Panel1.Controls.Add(this.button6);
             this.splitContainer7.Panel1.Controls.Add(this.label30);
             this.splitContainer7.Panel1.Controls.Add(this.label27);
             this.splitContainer7.Panel1.Controls.Add(this.label28);
@@ -693,7 +705,7 @@
             // splitContainer7.Panel2
             // 
             this.splitContainer7.Panel2.Controls.Add(this.dataGridView3);
-            this.splitContainer7.Size = new System.Drawing.Size(859, 561);
+            this.splitContainer7.Size = new System.Drawing.Size(887, 561);
             this.splitContainer7.SplitterDistance = 154;
             this.splitContainer7.TabIndex = 3;
             // 
@@ -726,7 +738,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(636, 53);
+            this.button4.Location = new System.Drawing.Point(436, 85);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(98, 56);
             this.button4.TabIndex = 19;
@@ -736,7 +748,7 @@
             // 
             // btQueryInventory
             // 
-            this.btQueryInventory.Location = new System.Drawing.Point(476, 53);
+            this.btQueryInventory.Location = new System.Drawing.Point(436, 17);
             this.btQueryInventory.Name = "btQueryInventory";
             this.btQueryInventory.Size = new System.Drawing.Size(98, 56);
             this.btQueryInventory.TabIndex = 18;
@@ -775,7 +787,7 @@
             this.dataGridView3.Location = new System.Drawing.Point(0, 0);
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.RowTemplate.Height = 23;
-            this.dataGridView3.Size = new System.Drawing.Size(859, 403);
+            this.dataGridView3.Size = new System.Drawing.Size(887, 403);
             this.dataGridView3.TabIndex = 2;
             // 
             // groupBox3
@@ -789,7 +801,7 @@
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox3.Location = new System.Drawing.Point(0, 0);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(859, 78);
+            this.groupBox3.Size = new System.Drawing.Size(887, 78);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "结果汇总";
@@ -854,7 +866,7 @@
             this.tp_Items_Information.Font = new System.Drawing.Font("宋体", 14F);
             this.tp_Items_Information.Location = new System.Drawing.Point(4, 34);
             this.tp_Items_Information.Name = "tp_Items_Information";
-            this.tp_Items_Information.Size = new System.Drawing.Size(859, 643);
+            this.tp_Items_Information.Size = new System.Drawing.Size(887, 643);
             this.tp_Items_Information.TabIndex = 3;
             this.tp_Items_Information.Text = "项目信息查询";
             this.tp_Items_Information.UseVisualStyleBackColor = true;
@@ -873,7 +885,7 @@
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.groupBox4);
-            this.splitContainer4.Size = new System.Drawing.Size(859, 643);
+            this.splitContainer4.Size = new System.Drawing.Size(887, 643);
             this.splitContainer4.SplitterDistance = 561;
             this.splitContainer4.TabIndex = 1;
             // 
@@ -896,7 +908,7 @@
             // splitContainer8.Panel2
             // 
             this.splitContainer8.Panel2.Controls.Add(this.dataGridView4);
-            this.splitContainer8.Size = new System.Drawing.Size(859, 561);
+            this.splitContainer8.Size = new System.Drawing.Size(887, 561);
             this.splitContainer8.SplitterDistance = 154;
             this.splitContainer8.TabIndex = 3;
             // 
@@ -969,7 +981,7 @@
             this.dataGridView4.Location = new System.Drawing.Point(0, 0);
             this.dataGridView4.Name = "dataGridView4";
             this.dataGridView4.RowTemplate.Height = 23;
-            this.dataGridView4.Size = new System.Drawing.Size(859, 403);
+            this.dataGridView4.Size = new System.Drawing.Size(887, 403);
             this.dataGridView4.TabIndex = 3;
             // 
             // groupBox4
@@ -983,7 +995,7 @@
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox4.Location = new System.Drawing.Point(0, 0);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(859, 78);
+            this.groupBox4.Size = new System.Drawing.Size(887, 78);
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "结果汇总";
@@ -1042,13 +1054,70 @@
             this.label24.TabIndex = 0;
             this.label24.Text = "总共有:";
             // 
-            // StatementManage
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(597, 85);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(98, 56);
+            this.button5.TabIndex = 27;
+            this.button5.Text = "管理";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(597, 17);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(98, 56);
+            this.button6.TabIndex = 26;
+            this.button6.Text = "删除";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(735, 82);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(98, 56);
+            this.button7.TabIndex = 29;
+            this.button7.Text = "管理";
+            this.button7.UseVisualStyleBackColor = true;
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(735, 14);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(98, 56);
+            this.button8.TabIndex = 28;
+            this.button8.Text = "删除";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(761, 81);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(98, 56);
+            this.button9.TabIndex = 29;
+            this.button9.Text = "管理";
+            this.button9.UseVisualStyleBackColor = true;
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(761, 13);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(98, 56);
+            this.button10.TabIndex = 28;
+            this.button10.Text = "删除";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // StatementQuery
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(867, 681);
+            this.ClientSize = new System.Drawing.Size(895, 681);
             this.Controls.Add(this.tabcQuery);
-            this.Name = "StatementManage";
+            this.Name = "StatementQuery";
             this.Text = "StatementManage";
             this.Load += new System.EventHandler(this.StatementManage_Load);
             this.Resize += new System.EventHandler(this.StatementManage_Resize);
@@ -1190,5 +1259,11 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
     }
 }

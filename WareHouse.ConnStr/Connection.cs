@@ -73,23 +73,21 @@ namespace WareHouse.ConnStr
         /// <param name="sqlStr">删除语句</param>
         /// <param name="parameter">参数</param>
         /// <returns></returns>
-        public static bool DeleteData(SqlTransaction tran, string sqlStr, params SqlParameter[] parameter)
+        public bool DeleteData(SqlConnection conn, SqlTransaction tran, string sqlStr, params SqlParameter[] parameter)
         {
             try
             {
-                using (SqlConnection conn = new SqlConnection())
+
+                SqlCommand cmd = new SqlCommand(sqlStr, conn);
+                cmd.Parameters.AddRange(parameter);
+                cmd.Transaction = tran;
+                var row = cmd.ExecuteNonQuery();
+                if (row > 0)
                 {
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand(sqlStr, conn);
-                    cmd.Parameters.AddRange(parameter);
-                    var row = cmd.ExecuteNonQuery();
-                    conn.Close();
-                    if (row > 0)
-                    {
-                        return true;
-                    }
-                    return false;
+                    return true;
                 }
+                return false;
+
             }
             catch (Exception ex)
             {

@@ -32,10 +32,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.tbAdmin = new System.Windows.Forms.TextBox();
+            this.oldPassword = new System.Windows.Forms.TextBox();
+            this.newpassword = new System.Windows.Forms.TextBox();
+            this.confirmPassword = new System.Windows.Forms.TextBox();
+            this.btConfirm = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -78,48 +81,80 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "确认密码:";
             // 
-            // textBox1
+            // tbAdmin
             // 
-            this.textBox1.Font = new System.Drawing.Font("宋体", 12F);
-            this.textBox1.Location = new System.Drawing.Point(124, 79);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(100, 26);
-            this.textBox1.TabIndex = 4;
+            this.tbAdmin.Font = new System.Drawing.Font("宋体", 12F);
+            this.tbAdmin.Location = new System.Drawing.Point(124, 79);
+            this.tbAdmin.Name = "tbAdmin";
+            this.tbAdmin.ReadOnly = true;
+            this.tbAdmin.Size = new System.Drawing.Size(100, 26);
+            this.tbAdmin.TabIndex = 4;
             // 
-            // textBox2
+            // oldPassword
             // 
-            this.textBox2.Font = new System.Drawing.Font("宋体", 12F);
-            this.textBox2.Location = new System.Drawing.Point(124, 118);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 26);
-            this.textBox2.TabIndex = 5;
+            this.oldPassword.Font = new System.Drawing.Font("宋体", 12F);
+            this.oldPassword.Location = new System.Drawing.Point(124, 118);
+            this.oldPassword.Name = "oldPassword";
+            this.oldPassword.Size = new System.Drawing.Size(100, 26);
+            this.oldPassword.TabIndex = 5;
             // 
-            // textBox3
+            // newpassword
             // 
-            this.textBox3.Font = new System.Drawing.Font("宋体", 12F);
-            this.textBox3.Location = new System.Drawing.Point(124, 160);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 26);
-            this.textBox3.TabIndex = 6;
+            this.newpassword.Font = new System.Drawing.Font("宋体", 12F);
+            this.newpassword.Location = new System.Drawing.Point(124, 160);
+            this.newpassword.Name = "newpassword";
+            this.newpassword.Size = new System.Drawing.Size(100, 26);
+            this.newpassword.TabIndex = 6;
             // 
-            // textBox4
+            // confirmPassword
             // 
-            this.textBox4.Font = new System.Drawing.Font("宋体", 12F);
-            this.textBox4.Location = new System.Drawing.Point(124, 201);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 26);
-            this.textBox4.TabIndex = 7;
+            this.confirmPassword.Font = new System.Drawing.Font("宋体", 12F);
+            this.confirmPassword.Location = new System.Drawing.Point(124, 201);
+            this.confirmPassword.Name = "confirmPassword";
+            this.confirmPassword.Size = new System.Drawing.Size(100, 26);
+            this.confirmPassword.TabIndex = 7;
+            // 
+            // btConfirm
+            // 
+            this.btConfirm.Location = new System.Drawing.Point(40, 245);
+            this.btConfirm.Name = "btConfirm";
+            this.btConfirm.Size = new System.Drawing.Size(75, 23);
+            this.btConfirm.TabIndex = 8;
+            this.btConfirm.Text = "确定";
+            this.btConfirm.UseVisualStyleBackColor = true;
+            this.btConfirm.Click += new System.EventHandler(this.btConfirm_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(149, 245);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 9;
+            this.button2.Text = "取消";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("宋体", 12F);
+            this.label5.Location = new System.Drawing.Point(97, 37);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(72, 16);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "修改密码";
             // 
             // Password
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(265, 292);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btConfirm);
+            this.Controls.Add(this.confirmPassword);
+            this.Controls.Add(this.newpassword);
+            this.Controls.Add(this.oldPassword);
+            this.Controls.Add(this.tbAdmin);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -137,9 +172,12 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox tbAdmin;
+        private System.Windows.Forms.TextBox oldPassword;
+        private System.Windows.Forms.TextBox newpassword;
+        private System.Windows.Forms.TextBox confirmPassword;
+        private System.Windows.Forms.Button btConfirm;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label5;
     }
 }
