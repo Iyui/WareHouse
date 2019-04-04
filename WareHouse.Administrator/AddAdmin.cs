@@ -40,8 +40,6 @@ namespace WareHouse.Administrator
                 return;
             }
             InsertAdmin();
-
-
         }
 
         private void InsertAdmin()

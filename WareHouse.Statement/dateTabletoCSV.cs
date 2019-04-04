@@ -4,10 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Data;
 using System.IO;
+using System.Data.SqlClient;
+using WareHouse.ConnStr;
+using System.Windows.Forms;
 namespace WareHouse.Statement
 {
     class dateTabletoCSV
     {
+        static string connStr = Connection.ConnStr;
         public static void dataTableToCsv(DataTable table, string file)
         {
             FileInfo fi = new FileInfo(file);
@@ -54,6 +58,31 @@ namespace WareHouse.Statement
         public static void ClickOpenLocation(string location)
         {
             System.Diagnostics.Process.Start("Explorer", "/select," + @location);
+        }
+
+        public static void ConditionQuery(DataGridView dgv,string strSqlQuery)
+        {
+            dgv.Rows.Clear();
+            SqlDataReader reader = null;
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                SqlCommand storers = conn.CreateCommand();
+                storers.CommandText = strSqlQuery;
+                conn.Open();
+                using (reader = storers.ExecuteReader())
+                {
+                    if (!reader.Read())
+                    {
+                        return;
+                    }
+                }
+                using (reader = storers.ExecuteReader())
+                {
+                    BindingSource Bs = new BindingSource();
+                    Bs.DataSource = reader;
+                    dgv.DataSource = Bs;
+                }
+            }
         }
     }
 }

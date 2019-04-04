@@ -25,7 +25,6 @@ namespace WareHouse.ConnStr
                 cmd.Parameters.AddRange(parameter);
                 cmd.Transaction = tran;
                 var row = cmd.ExecuteNonQuery();
-
                 if (row > 0)
                 {
                     return true;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-
+using WareHouse.Statement.Manager;
 namespace WareHouse.Statement
 {
     static class Program
@@ -15,7 +15,7 @@ namespace WareHouse.Statement
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Storehouse());
+            Application.Run(new ItemManager());
         }
     }
 }

@@ -140,7 +140,7 @@ namespace WareHouse.Main
                 SqlTransaction tran = conn.BeginTransaction();
                 try
                 {
-                    Get_goods_paras(out SqlParameter[] In_goods_paras, out SqlParameter[] storehouse_paras);
+                    Get_goods_paras(out SqlParameter[] In_goods_paras, out SqlParameter[] storehouse_paras, out SqlParameter[] storehouse_paras2);
                     //isMeetConditions();
                     string ingoodsSql = "INSERT INTO in_goods (" +
                         "物资编号,品名,规格,计量单位," +
@@ -155,8 +155,28 @@ namespace WareHouse.Main
 
                     string goodstoreSql = $"update storehouse set 数量 = @数量, 库存单价 = @库存单价, 金额 = @金额 WHERE 物资编号 = '{ cbWuzibianhao.Text.Trim()}' ";
                     var isIngoodSucceed = ct.AddData(conn, tran, ingoodsSql, In_goods_paras);
-                    var isStorehouseSucceed = ct.UpdateData(conn, tran, goodstoreSql, storehouse_paras);
-                    if (isIngoodSucceed && isStorehouseSucceed)
+                    var isStorehouseSucceed = false;
+                       
+                    bool isgoodsSucceed = false;
+                    if (needInsert())
+                    {
+                        goodstoreSql = "INSERT INTO storehouse (物资编号,品名,规格,计量单位,数量,库存单价,金额,备注) VALUES(@物资编号,@品名,@规格,@计量单位,@数量,@库存单价,@金额,@备注)";
+                        isStorehouseSucceed = ct.AddData(conn, tran, goodstoreSql, storehouse_paras2);
+                        var InsertGoods = "INSERT INTO goods (物资编号,品名,规格,计量单位) VALUES(@物资编号,@品名,@规格,@计量单位)";
+                        var goods_paras = new SqlParameter[]
+                        {
+                //不声明变量类型 直接进行复制
+                            new SqlParameter("@物资编号",goodcode),new SqlParameter("@品名",goodname),
+                            new SqlParameter("@规格",guige),new SqlParameter("@计量单位",danwei),
+                        };
+                        isgoodsSucceed = ct.AddData(conn, tran, InsertGoods, goods_paras);
+                    }
+                    else
+                    {
+                        isgoodsSucceed = true;
+                        isStorehouseSucceed = ct.UpdateData(conn, tran, goodstoreSql, storehouse_paras);
+                    }
+                    if (isIngoodSucceed && isStorehouseSucceed && isgoodsSucceed)
                     {
                         tran.Commit();
                         MessageBox.Show("入库成功");
@@ -182,7 +202,7 @@ namespace WareHouse.Main
             }
         }
 
-        private void Get_goods_paras(out SqlParameter[] In_goods_paras, out SqlParameter[] storehouse_paras)
+        private void Get_goods_paras(out SqlParameter[] In_goods_paras, out SqlParameter[] storehouse_paras, out SqlParameter[] storehouse_paras2)
         {
             var goodcode = cbWuzibianhao.Text.Trim();//物资编号
             var goodname = cbPinming.Text.Trim();//品名
@@ -213,6 +233,16 @@ namespace WareHouse.Main
                 new SqlParameter("@库存单价",dstoredanjia),
                 new SqlParameter("@数量",dstoreshuliang),
                 new SqlParameter("@金额",dstorejine),
+            };
+            storehouse_paras2 = new SqlParameter[]
+            {
+                //不声明变量类型 直接进行复制
+                new SqlParameter("@物资编号",goodcode),new SqlParameter("@品名",goodname),
+                new SqlParameter("@规格",guige),new SqlParameter("@计量单位",danwei),
+                new SqlParameter("@库存单价",dstoredanjia),
+                new SqlParameter("@数量",dstoreshuliang),
+                new SqlParameter("@金额",dstorejine),
+                new SqlParameter("@备注",beizhu),
             };
             In_goods_paras = new SqlParameter[]
             {
@@ -298,6 +328,7 @@ namespace WareHouse.Main
                 using (reader1 = storers.ExecuteReader())
                 {
                     if (reader1.Read())
+                    {
                         if (danjia != "")
                         {
                             if (reader1["库存单价"].ToString().Trim() != "")
@@ -325,9 +356,10 @@ namespace WareHouse.Main
                                 if (float.Parse(danjia) > 0)
                                 {
                                     storejine = (Convert.ToSingle(reader1["数量"]) + float.Parse(danjia) * float.Parse(shuliang)).ToString("#0.000000");
-                                    storedanjia = string.Format(danjia,"#0.000000");
+                                    storedanjia = string.Format(danjia, "#0.000000");
                                 }
                             }
+
                         }
                         else
                         {
@@ -337,9 +369,37 @@ namespace WareHouse.Main
                                     storejine = (Convert.ToSingle(reader1["库存单价"]) * Convert.ToSingle(reader1["数量"]) + float.Parse(shuliang)).ToString("#0.000000");
                             }
                         }
-                    storeshuliang = (Convert.ToSingle(reader1["数量"]) + float.Parse(shuliang)).ToString("#0.000000");
-                    jiecunshuliang = (Convert.ToSingle(reader1["数量"])).ToString("#0.000000");
-                    jiecunjine = (Convert.ToSingle(reader1["金额"])).ToString("#0.000000");
+                        storeshuliang = (Convert.ToSingle(reader1["数量"]) + float.Parse(shuliang)).ToString("#0.000000");
+                        jiecunshuliang = (Convert.ToSingle(reader1["数量"])).ToString("#0.000000");
+                        jiecunjine = (Convert.ToSingle(reader1["金额"])).ToString("#0.000000");
+                    }
+                    else
+                    {
+                        storeshuliang = shuliang;
+                        storejine = jine;
+                        storedanjia = danjia;
+                        jiecunshuliang = shuliang;
+                        jiecunjine = jine;
+                    }
+                    
+                    return true;
+                }
+            }
+        }
+
+        private bool needInsert()
+        {
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                string sqlStr = $"select count(*) from storehouse where 物资编号 = '{cbWuzibianhao.Text}'";
+                using (SqlCommand cmd = new SqlCommand(sqlStr, conn))
+                {
+                    conn.Open();
+                    int n = Convert.ToInt32(cmd.ExecuteScalar());
+                    if (n > 0)
+                    {
+                        return false;
+                    }
                     return true;
                 }
             }

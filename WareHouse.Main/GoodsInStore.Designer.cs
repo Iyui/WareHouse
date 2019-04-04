@@ -75,8 +75,9 @@
             // 
             this.tbbeizhu.Font = new System.Drawing.Font("宋体", 12F);
             this.tbbeizhu.Location = new System.Drawing.Point(111, 499);
+            this.tbbeizhu.Multiline = true;
             this.tbbeizhu.Name = "tbbeizhu";
-            this.tbbeizhu.Size = new System.Drawing.Size(634, 26);
+            this.tbbeizhu.Size = new System.Drawing.Size(634, 52);
             this.tbbeizhu.TabIndex = 15;
             // 
             // tbzhizaochangjia

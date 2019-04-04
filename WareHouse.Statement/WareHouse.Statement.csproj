@@ -101,6 +101,9 @@
     <EmbeddedResource Include="Manager\InManager.resx">
       <DependentUpon>InManager.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Manager\ItemManager.resx">
+      <DependentUpon>ItemManager.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Manager\StoreManager.resx">
       <DependentUpon>StoreManager.cs</DependentUpon>
     </EmbeddedResource>
