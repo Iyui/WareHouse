@@ -83,7 +83,6 @@ namespace WareHouse.Statement
         private void Storehouse_Load(object sender, EventArgs e)
         {
             string str = "select * from storehouse"; //查询语句
-            strSqlCount = "select count(*)as 记录数,sum(数量)as 库存总数量,sum(金额)as 总金额 from storehouse ";
             LoadPage(str);
         }
 
@@ -113,7 +112,6 @@ namespace WareHouse.Statement
         private void rbAllinventory_CheckedChanged(object sender, EventArgs e)
         {
             string str = "select * from storehouse"; //这里是你的查询语句
-            strSqlCount = "select count(*)as 记录数,sum(数量)as 库存总数量,sum(金额)as 总金额 from storehouse ";
             LoadPage(str);
         }
 
@@ -129,15 +127,13 @@ namespace WareHouse.Statement
         private void rbinventory_CheckedChanged(object sender, EventArgs e)
         {
             string str = "select * from storehouse where 数量 > 0"; //这里是你的查询语句
-            strSqlCount = "select count(*)as 记录数,sum(数量)as 库存总数量,sum(金额)as 总金额 from storehouse where 数量 > 0";
             LoadPage(str);
         }
 
         private void rbNoinventory_CheckedChanged(object sender, EventArgs e)
         {
             string str = "select * from storehouse where 数量 = 0"; //这里是你的查询语句
-            strSqlCount = "select count(*)as 记录数,sum(数量)as 库存总数量,sum(金额)as 总金额 from storehouse where 数量 = 0";
-
+          
             LoadPage(str);
         }
 
@@ -184,10 +180,13 @@ namespace WareHouse.Statement
                     }
                 }
                 strSqlCount = "select count(*) as 未标价 from storehouse where 库存单价 is null or 库存单价 = 0 and 数量 > 0";
+                //SELECT   count(DISTINCT 品名) as 未标价 FROM [storemanage].[dbo].[storehouse] where 库存单价 is null or 库存单价 = 0 and 数量 > 0
+                //按品名去重
                 storers.CommandText = strSqlCount;
                 using (reader = storers.ExecuteReader())
                 {
-                    lb4.Text = Convert.ToString(reader[0]).Trim();
+                    if (reader.Read())
+                        lb4.Text = Convert.ToString(reader[0]).Trim();
                 }
             }
         }
