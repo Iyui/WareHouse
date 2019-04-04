@@ -58,17 +58,26 @@ namespace WareHouse.Statement.Manager
                     int n = Convert.ToInt32(cmd.ExecuteScalar());
                     if (n > 0)
                     {
-
+                        modifyItem();
                     }
                     else
                     {
                         if (MessageBox.Show("项目中没有此项目,是否要添加?", "提示", MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
-
+                            AddItem();
                         }
                     }
                 }
             }
+        }
+        private void AddItem()
+        {
+
+        }
+
+        private void modifyItem()
+        {
+
         }
     }
 }
