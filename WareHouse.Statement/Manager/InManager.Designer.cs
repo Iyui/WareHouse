@@ -31,7 +31,6 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dateTime = new System.Windows.Forms.DateTimePicker();
             this.tbPrices = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -62,10 +61,11 @@
             this.tbzhizaochangjia = new System.Windows.Forms.TextBox();
             this.tbbeizhu = new System.Windows.Forms.TextBox();
             this.tbRukudan = new System.Windows.Forms.TextBox();
-            this.bt_Save = new System.Windows.Forms.Button();
-            this.bt_Amend = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.button1 = new System.Windows.Forms.Button();
             this.bt_Add = new System.Windows.Forms.Button();
+            this.bt_Save = new System.Windows.Forms.Button();
+            this.bt_Amend = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -145,16 +145,6 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(896, 544);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // dateTime
             // 
@@ -471,23 +461,15 @@
             this.tbRukudan.Size = new System.Drawing.Size(230, 26);
             this.tbRukudan.TabIndex = 43;
             // 
-            // bt_Save
+            // tabPage2
             // 
-            this.bt_Save.Location = new System.Drawing.Point(500, 3);
-            this.bt_Save.Name = "bt_Save";
-            this.bt_Save.Size = new System.Drawing.Size(110, 43);
-            this.bt_Save.TabIndex = 29;
-            this.bt_Save.Text = "保存";
-            this.bt_Save.UseVisualStyleBackColor = true;
-            // 
-            // bt_Amend
-            // 
-            this.bt_Amend.Location = new System.Drawing.Point(302, 2);
-            this.bt_Amend.Name = "bt_Amend";
-            this.bt_Amend.Size = new System.Drawing.Size(110, 43);
-            this.bt_Amend.TabIndex = 28;
-            this.bt_Amend.Text = "修改";
-            this.bt_Amend.UseVisualStyleBackColor = true;
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(896, 544);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
@@ -506,6 +488,25 @@
             this.bt_Add.TabIndex = 30;
             this.bt_Add.Text = "添加";
             this.bt_Add.UseVisualStyleBackColor = true;
+            this.bt_Add.Click += new System.EventHandler(this.bt_Add_Click);
+            // 
+            // bt_Save
+            // 
+            this.bt_Save.Location = new System.Drawing.Point(500, 3);
+            this.bt_Save.Name = "bt_Save";
+            this.bt_Save.Size = new System.Drawing.Size(110, 43);
+            this.bt_Save.TabIndex = 29;
+            this.bt_Save.Text = "保存";
+            this.bt_Save.UseVisualStyleBackColor = true;
+            // 
+            // bt_Amend
+            // 
+            this.bt_Amend.Location = new System.Drawing.Point(302, 2);
+            this.bt_Amend.Name = "bt_Amend";
+            this.bt_Amend.Size = new System.Drawing.Size(110, 43);
+            this.bt_Amend.TabIndex = 28;
+            this.bt_Amend.Text = "修改";
+            this.bt_Amend.UseVisualStyleBackColor = true;
             // 
             // InManager
             // 
@@ -515,6 +516,7 @@
             this.Controls.Add(this.splitContainer1);
             this.Name = "InManager";
             this.Text = "InManager";
+            this.Load += new System.EventHandler(this.InManager_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();

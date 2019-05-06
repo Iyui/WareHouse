@@ -15,7 +15,7 @@ namespace WareHouse.Statement
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ItemManager());
+            Application.Run(new StatementQuery());
         }
     }
 }

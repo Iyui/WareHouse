@@ -276,5 +276,15 @@ namespace WareHouse.Statement.Manager
                 catch { };
             }
         }
+
+        private void InManager_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bt_Add_Click(object sender, EventArgs e)
+        {
+            AddRecord();
+        }
     }
 }

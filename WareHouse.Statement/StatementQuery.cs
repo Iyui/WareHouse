@@ -511,5 +511,35 @@ namespace WareHouse.Statement
                 DeleteInformation(dataGridView3, "物资编号", "storehouse");
             btQuery_Click(sender, e);
         }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(cb_Item_Query.Text.Trim())&& String.IsNullOrEmpty(cb_Item_Query2.Text.Trim()))
+            {
+                strSqlQuery = $"select out_goods.* from out_goods where out_goods.项目编号 in (select item_information.项目编号 from item_information where item_information.{cb_Item_Condition.Text} ='{cb_Item_Query.Text}')";
+                ConditionQuery(dataGridView5);
+                label36.Text = dataGridView5.Rows.Count.ToString();
+            }
+            else if (!String.IsNullOrEmpty(cb_Item_Query.Text.Trim()) && !String.IsNullOrEmpty(cb_Item_Query2.Text.Trim()))
+            {
+                if (cb_Item_Condition.Text != cb_Item_Condition2.Text)
+                {
+                    strSqlQuery = $"select out_goods.* from out_goods where out_goods.项目编号 in (select item_information.项目编号 from item_information where item_information.{cb_Item_Condition.Text} ='{cb_Item_Query.Text}' AND  item_information.{cb_Item_Condition2.Text} ='{cb_Item_Query2.Text}')";
+                    ConditionQuery(dataGridView5);
+                    label36.Text = dataGridView5.Rows.Count.ToString();
+                }
+            }
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            dtSource = GetDgvToTable(dataGridView5);
+            ExportCSV();
+        }
     }
 }
